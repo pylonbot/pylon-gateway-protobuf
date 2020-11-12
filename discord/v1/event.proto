@@ -1,0 +1,273 @@
+syntax = "proto3";
+
+package pylon.discord.v1.event;
+option java_package = "bot.pylon.proto.discord.v1.event";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/event";
+
+import "discord/v1/model.proto";
+import "google/protobuf/timestamp.proto";
+
+message EventScope {
+  fixed64 bot_id = 1 [jstype = JS_STRING];
+  fixed64 guild_id = 2 [jstype = JS_STRING];
+}
+
+message GuildCreateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.GuildData payload = 2;
+}
+
+message GuildUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.GuildData payload = 2;
+  pylon.discord.v1.model.GuildData previously_cached = 3;
+}
+
+message GuildDeleteEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.GuildData payload = 2;
+}
+
+message PresenceUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.PresenceData payload = 2;
+  pylon.discord.v1.model.PresenceData previously_cached = 3;
+}
+
+message GuildMemberAddEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.MemberData payload = 2;
+}
+
+message GuildMemberUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.MemberData payload = 2;
+  pylon.discord.v1.model.MemberData previously_cached = 3;
+}
+
+message GuildMemberRemoveEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.MemberData payload = 2;
+}
+
+message ChannelCreateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.ChannelData payload = 2;
+}
+
+message ChannelUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.ChannelData payload = 2;
+  pylon.discord.v1.model.ChannelData previously_cached = 3;
+}
+
+message ChannelDeleteEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.ChannelData payload = 2;
+}
+
+message ChannelPinsUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    fixed64 guild_id = 2 [jstype = JS_STRING];
+    google.protobuf.Timestamp last_pin_timestamp = 3;
+  }
+}
+message GuildRoleCreateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.RoleData payload = 2;
+}
+message GuildRoleUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.RoleData payload = 2;
+  pylon.discord.v1.model.RoleData previously_cached = 3;
+}
+message GuildRoleDeleteEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.RoleData payload = 2;
+}
+message MessageCreateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.MessageData message = 2;
+}
+message MessageUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.MessageData payload = 2;
+  pylon.discord.v1.model.MessageData previously_cached = 3;
+}
+message MessageDeleteEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+  pylon.discord.v1.model.MessageData previously_cached = 3;
+
+  message Payload {
+    fixed64 id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    fixed64 guild_id = 3 [jstype = JS_STRING];
+  }
+}
+message MessageDeleteBulkEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    repeated fixed64 ids = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2;
+    fixed64 guild_id = 3;
+  }
+}
+message MessageReactionAddEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 user_id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    fixed64 message_id = 3 [jstype = JS_STRING];
+    fixed64 guild_id = 4 [jstype = JS_STRING];
+
+    pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 6;
+  }
+}
+message MessageReactionRemoveEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 user_id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    fixed64 message_id = 3 [jstype = JS_STRING];
+    fixed64 guild_id = 4 [jstype = JS_STRING];
+    pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 5;
+  }
+}
+message MessageReactionRemoveAllEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    fixed64 message_id = 2 [jstype = JS_STRING];
+    fixed64 guild_id = 3 [jstype = JS_STRING];
+  }
+}
+message MessageReactionRemoveEmojiEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    fixed64 message_id = 2 [jstype = JS_STRING];
+    fixed64 guild_id = 3 [jstype = JS_STRING];
+    pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 4;
+  }
+}
+message TypingStartEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    fixed64 user_id = 2 [jstype = JS_STRING];
+    google.protobuf.Timestamp timestamp = 3;
+    pylon.discord.v1.model.MemberData member = 4;
+  }
+}
+message VoiceStateUpdateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.VoiceStateData payload = 2;
+  pylon.discord.v1.model.VoiceStateData previously_cached = 3;
+}
+message VoiceServerUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    string token = 2;
+    string endpoint = 3;
+  }
+}
+message InviteCreateEvent {
+  EventScope scope = 1;
+  pylon.discord.v1.model.InviteData payload = 2;
+}
+message InviteDeleteEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    string code = 3;
+  }
+}
+message GuildBanAddEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    pylon.discord.v1.model.UserData user = 2;
+  }
+}
+message GuildBanRemoveEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    pylon.discord.v1.model.UserData user = 2;
+  }
+}
+message GuildEmojisUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+  Payload previously_cached = 3;
+
+  message Payload {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    repeated pylon.discord.v1.model.EmojiData emojis = 2;
+  }
+}
+message GuildIntegrationsUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+}
+message WebhooksUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+}
+message IntegrationCreateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+}
+message IntegrationUpdateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+}
+message IntegrationDeleteEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+}
+message InteractionCreateEvent {
+  EventScope scope = 1;
+  Payload payload = 2;
+
+  message Payload { sfixed64 guild_id = 1 [jstype = JS_STRING]; }
+}

@@ -1,0 +1,393 @@
+syntax = "proto3";
+
+package pylon.discord.v1.model;
+option java_package = "bot.pylon.proto.discord.v1.model";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/model";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message SnowflakeValue { fixed64 value = 1 [jstype = JS_STRING]; }
+message SnowflakeListValue { repeated fixed64 values = 1 [jstype = JS_STRING]; }
+
+message PermissionsValue { uint64 value = 1 [jstype = JS_STRING]; }
+
+message GuildData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  string name = 2;
+  google.protobuf.StringValue icon = 3;
+  string region = 4;
+  SnowflakeValue afk_channel_id = 5;
+  fixed64 owner_id = 6 [jstype = JS_STRING];
+  google.protobuf.Timestamp joined_at = 7;
+  google.protobuf.StringValue splash = 8;
+  google.protobuf.StringValue discovery_splash = 9;
+  uint32 afk_timeout = 10;
+  uint32 member_count = 11;
+  uint32 verification_level = 12;
+  uint32 default_message_notifications = 13;
+  uint32 explicit_content_filter = 14;
+  repeated string features = 15;
+  uint32 mfa_level = 16;
+  bool widget_enabled = 17;
+  SnowflakeValue widget_channel_id = 18;
+  SnowflakeValue system_channel_id = 19;
+  google.protobuf.StringValue vanity_url_code = 20;
+  google.protobuf.StringValue description = 21;
+  google.protobuf.StringValue banner = 22;
+  uint32 premium_tier = 23;
+  uint32 premium_subscription_count = 24;
+  bool unavailable = 25;
+}
+
+message ChannelData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  SnowflakeValue guild_id = 2;
+  string name = 3;
+  google.protobuf.StringValue topic = 4;
+  ChannelType type = 5;
+  bool nsfw = 6;
+  uint32 position = 7;
+  uint32 bitrate = 8;
+  uint32 user_limit = 9;
+  SnowflakeValue parent_id = 10;
+  uint32 rate_limit_per_user = 11;
+  repeated ChannelPermissionOverwriteData permission_overwrites = 12;
+
+  enum ChannelType {
+    UNKNOWN = 0; GUILD_TEXT = 1; DM = 2; GUILD_VOICE = 3; GROUP_DM = 4;
+    GUILD_CATEGORY = 5;
+    GUILD_NEWS = 6;
+    GUILD_STORE = 7;
+  }
+
+  message ChannelPermissionOverwriteData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    ChannelPermissionOverwriteType type = 2;
+    uint64 allow = 3 [jstype = JS_STRING];
+    uint64 deny = 4 [jstype = JS_STRING];
+
+    enum ChannelPermissionOverwriteType { UNKNOWN = 0; ROLE = 1; MEMBER = 2; }
+  }
+}
+
+message UserData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  string username = 2;
+  google.protobuf.StringValue avatar = 3;
+  uint32 discriminator = 4;
+  bool bot = 5;
+}
+
+message MemberData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  fixed64 guild_id = 2 [jstype = JS_STRING];
+  UserData user = 3;
+  google.protobuf.StringValue nick = 4;
+  repeated fixed64 roles = 5 [jstype = JS_STRING];
+  google.protobuf.Timestamp joined_at = 6;
+  google.protobuf.Timestamp premium_since = 7;
+  uint64 permissions = 8 [jstype = JS_STRING];
+}
+
+message RoleData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  fixed64 guild_id = 2 [jstype = JS_STRING];
+  string name = 3;
+  bool managed = 4;
+  bool mentionable = 5;
+  bool hoist = 6;
+  uint32 color = 7;
+  uint32 position = 8;
+  uint64 permissions = 9 [jstype = JS_STRING];
+}
+
+message EmojiData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  fixed64 guild_id = 2 [jstype = JS_STRING];
+  string name = 3;
+  bool animated = 4;
+  repeated fixed64 roles = 5 [jstype = JS_STRING];
+  bool managed = 6;
+  bool require_colons = 7;
+  bool available = 8;
+  fixed64 user_id = 9 [jstype = JS_STRING];
+}
+
+message VoiceStateData {
+  MemberData member = 1;
+  fixed64 guild_id = 2 [jstype = JS_STRING];
+  SnowflakeValue channel_id = 3;
+  google.protobuf.StringValue session_id = 4;
+  bool self_mute = 5;
+  bool self_deaf = 6;
+  bool self_video = 7;
+  bool self_stream = 8;
+  bool mute = 9;
+  bool deaf = 10;
+  bool suppress = 11;
+}
+
+message MessageData {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  SnowflakeValue guild_id = 2;
+  string content = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  google.protobuf.Timestamp edited_timestamp = 5;
+  SnowflakeListValue mention_roles = 6;
+  bool tts = 7;
+  bool mention_everyone = 8;
+  repeated MessageAttachmentData attachments = 9;
+  repeated MessageEmbedData embeds = 10;
+  repeated MessageMentionData mentions = 11;
+  repeated MessageReactionData reactions = 12;
+  bool pinned = 13;
+  MessageType type = 14;
+  repeated MessageMentionChannelData mention_channels = 15;
+  uint32 flags = 16;
+  MessageActivityData activity = 17;
+  MessageApplicationData application = 18;
+  MessageReferenceData message_reference = 19;
+  UserData author = 20;
+  MemberData member = 21;
+  SnowflakeValue webhook_id = 22;
+
+  enum MessageType {
+    UNKNOWN = 0; DEFAULT = 1; RECIPIENT_ADD = 2; RECIPIENT_REMOVE = 3; CALL = 4;
+    CHANNEL_NAME_CHANGE = 5;
+    CHANNEL_ICON_CHANGE = 6;
+    CHANNEL_PINNED_MESSAGE = 7;
+    GUILD_MEMBER_JOIN = 8;
+    USER_PREMIUM_GUILD_SUBSCRIPTION = 9;
+    USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1 = 10;
+    USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2 = 11;
+    USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3 = 12;
+    CHANNEL_FOLLOW_ADD = 13;
+    GUILD_DISCOVERY_DISQUALIFIED = 15;
+    GUILD_DISCOVERY_REQUALIFIED = 16;
+  }
+
+  message MessageAttachmentData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string filename = 2;
+    uint64 size = 3;
+    string url = 4;
+    string proxy_url = 5;
+    uint64 width = 6;
+    uint64 height = 7;
+  }
+
+  message MessageMentionData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string username = 2;
+    string avatar = 3;
+    uint32 discriminator = 4;
+  }
+
+  message MessageReactionData {
+    uint32 count = 1;
+    bool me = 2;
+    MessageData.MessageReactionEmojiData emoji = 3;
+  }
+
+  message MessageReactionEmojiData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string name = 2;
+    bool animated = 3;
+  }
+
+  message MessageApplicationData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string cover_image = 2;
+    string description = 3;
+    string icon = 4;
+    string name = 5;
+  }
+
+  message MessageReferenceData {
+    fixed64 message_id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    fixed64 guild_id = 3 [jstype = JS_STRING];
+  }
+
+  message MessageActivityData {
+    uint32 type = 1;
+    string party_id = 2;
+  }
+
+  message MessageMentionChannelData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    fixed64 guild_id = 2 [jstype = JS_STRING];
+    ChannelData.ChannelType type = 3;
+    string name = 4;
+  }
+
+  message MessageEmbedData {
+    enum MessageEmbedType {
+      UNKNOWN = 0; RICH = 1; IMAGE = 2; VIDEO = 3; GIFV = 4; ARTICLE = 5;
+      LINK = 6;
+    }
+
+    message MessageEmbedFooterData {
+      string text = 1;
+      string icon_url = 2;
+      string proxy_icon_url = 3;
+    }
+
+    message MessageEmbedImageData {
+      string url = 1;
+      uint32 width = 2;
+      uint32 height = 3;
+    }
+
+    message MessageEmbedThumbnailData {
+      string url = 1;
+      string proxy_url = 2;
+      uint32 width = 3;
+      uint32 height = 4;
+    }
+
+    message MessageEmbedVideoData {
+      string url = 1;
+      uint32 width = 2;
+      uint32 height = 3;
+    }
+
+    message MessageEmbedProviderData {
+      string name = 1;
+      string url = 2;
+    }
+
+    message MessageEmbedAuthorData {
+      string name = 1;
+      string url = 2;
+      string icon_url = 3;
+      string proxy_icon_url = 4;
+    }
+
+    message MessageEmbedFieldData {
+      string name = 1;
+      string value = 2;
+      bool inline = 3;
+    }
+
+    string title = 1;
+    MessageEmbedType type = 2;
+    string description = 3;
+    string url = 4;
+    google.protobuf.Timestamp timestamp = 5;
+    uint32 color = 6;
+    MessageEmbedFooterData footer = 7;
+    MessageEmbedImageData image = 8;
+    MessageEmbedThumbnailData thumbnail = 9;
+    MessageEmbedVideoData video = 10;
+    MessageEmbedProviderData provider = 11;
+    MessageEmbedAuthorData author = 12;
+    repeated MessageEmbedFieldData fields = 13;
+  }
+}
+
+message PresenceData {
+  fixed64 guild_id = 1 [jstype = JS_STRING];
+  oneof maybe_partial_user {
+    UserData user = 2;
+    fixed64 user_id = 3;
+  }
+  string status = 4;
+  PresenceClientStatusData client_status = 5;
+  repeated PresenceActivityData activities = 6;
+
+  message PresenceClientStatusData {
+    string desktop = 1;
+    string mobile = 2;
+    string web = 3;
+  }
+
+  message PresenceActivityData {
+    string name = 1;
+    uint32 type = 2;
+    string url = 3;
+    google.protobuf.Timestamp created_at = 4;
+    PresenceActivityTimestampsData timestamps = 5;
+    fixed64 application_id = 6 [jstype = JS_STRING];
+    string details = 7;
+    string state = 8;
+    PresenceActivityEmojiData emoji = 9;
+    PresenceActivityPartyData party = 10;
+    PresenceActivityAssetsData assets = 11;
+    PresenceActivitySecretsData secrets = 12;
+    bool instance = 13;
+    uint32 flags = 14;
+
+    message PresenceActivityTimestampsData {
+      uint64 start = 1;
+      uint64 end = 2;
+    }
+
+    message PresenceActivityEmojiData {
+      string name = 1;
+      fixed64 id = 2 [jstype = JS_STRING];
+      bool animated = 3;
+    }
+
+    message PresenceActivityPartyData {
+      string id = 1;
+      uint64 current_size = 2;
+      uint64 max_size = 3;
+    }
+
+    message PresenceActivityAssetsData {
+      string large_image = 1;
+      string large_text = 2;
+      string small_image = 3;
+      string small_text = 4;
+    }
+
+    message PresenceActivitySecretsData {
+      string join = 1;
+      string spectate = 2;
+      string match = 3;
+    }
+  }
+}
+
+message WebhookData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  fixed64 channel_id = 2 [jstype = JS_STRING];
+  fixed64 guild_id = 3 [jstype = JS_STRING];
+  WebhookType type = 4;
+  string name = 5;
+  string avatar = 6;
+  string token = 7;
+
+  enum WebhookType { INCOMING = 0; CHANNEL_FOLLOWER = 1; }
+}
+
+message InviteData {
+  fixed64 guild_id = 1 [jstype = JS_STRING];
+  fixed64 channel_id = 2 [jstype = JS_STRING];
+  string code = 3;
+  google.protobuf.Timestamp created_at = 4;
+  UserData inviter = 5;
+  uint64 max_age = 6;
+  uint64 max_uses = 7;
+  bool temporary = 8;
+  uint64 uses = 9;
+}
+
+message GuildBanData {
+  string reason = 1;
+  UserData user = 2;
+}
+
+message ImageData {
+  enum ImageDataType { UNKNOWN = 0; JPEG = 1; PNG = 2; GIF = 3; }
+
+  ImageDataType type = 1;
+  oneof data {
+    string base64 = 2;
+    bytes bytes = 3;
+  }
+}

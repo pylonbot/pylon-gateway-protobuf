@@ -1,0 +1,862 @@
+syntax = "proto3";
+
+package pylon.discord.v1.rest;
+option java_package = "bot.pylon.proto.discord.v1.rest";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/rest";
+
+import "discord/v1/model.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+message RestError {
+  uint32 status = 1;
+  uint32 code = 2;
+  string message = 3;
+}
+
+// Modify Guild
+
+message ModifyGuildRequest {
+  google.protobuf.StringValue name = 1;
+  google.protobuf.StringValue region = 2;
+  google.protobuf.UInt32Value verification_level = 3;
+  google.protobuf.UInt32Value default_message_notifications = 4;
+  google.protobuf.UInt32Value explicit_content_filter = 5;
+  pylon.discord.v1.model.SnowflakeValue afk_channel_id = 6;
+  google.protobuf.UInt32Value afk_timeout = 7;
+  google.protobuf.StringValue icon = 8;
+  pylon.discord.v1.model.SnowflakeValue owner_id = 9;
+  google.protobuf.StringValue splash = 10;
+  google.protobuf.StringValue banner = 11;
+  pylon.discord.v1.model.SnowflakeValue system_channel_id = 12;
+  pylon.discord.v1.model.SnowflakeValue rules_channel_id = 13;
+  pylon.discord.v1.model.SnowflakeValue public_updates_channel_id = 14;
+  pylon.discord.v1.model.SnowflakeValue preferred_locale = 15;
+  google.protobuf.StringValue audit_log_reason = 16;
+}
+
+message ModifyGuildResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.GuildData guild = 1; }
+}
+
+// Create Guild Channel
+
+message CreateGuildChannelRequest {
+  string name = 1;
+  pylon.discord.v1.model.ChannelData.ChannelType type = 2;
+  google.protobuf.StringValue topic = 3;
+  google.protobuf.UInt32Value bitrate = 4;
+  google.protobuf.UInt32Value user_limit = 5;
+  google.protobuf.UInt32Value rate_limit_per_user = 6;
+  google.protobuf.UInt32Value position = 7;
+  repeated pylon.discord.v1.model.ChannelData
+      .ChannelPermissionOverwriteData permission_overwrites = 8;
+  pylon.discord.v1.model.SnowflakeValue parent_id = 9;
+  google.protobuf.BoolValue nsfw = 10;
+  google.protobuf.StringValue audit_log_reason = 11;
+}
+
+message CreateGuildChannelResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+}
+
+// Modify Guild Channel Positions
+
+message ModifyGuildChannelPositionsRequest {
+  repeated ChannelPosition channel_positions = 1;
+
+  message ChannelPosition {
+    fixed64 id = 1 [jstype = JS_STRING];
+    uint32 position = 2;
+  }
+}
+
+message ModifyGuildChannelPositionsResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Add Guild Member
+
+message AddGuildMemberRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  string access_token = 2;
+  google.protobuf.StringValue nick = 3;
+  pylon.discord.v1.model.SnowflakeListValue roles = 4;
+  google.protobuf.BoolValue mute = 5;
+  google.protobuf.BoolValue deaf = 6;
+}
+
+message AddGuildMemberResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { bool added = 1; }
+}
+
+// Modify Guild Member
+
+message ModifyGuildMemberRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue nick = 2;
+  pylon.discord.v1.model.SnowflakeListValue roles = 3;
+  google.protobuf.BoolValue mute = 4;
+  google.protobuf.BoolValue deaf = 5;
+  pylon.discord.v1.model.SnowflakeValue channel_id = 6;
+  google.protobuf.StringValue audit_log_reason = 7;
+}
+
+message ModifyGuildMemberResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Modify Current User Nick
+
+message ModifyCurrentUserNickRequest { google.protobuf.StringValue nick = 1; }
+
+message ModifyCurrentUserNickResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Add Guild Member Role
+
+message AddGuildMemberRoleRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  fixed64 role_id = 2 [jstype = JS_STRING];
+  google.protobuf.StringValue audit_log_reason = 3;
+}
+
+message AddGuildMemberRoleResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Remove Guild Member Role
+
+message RemoveGuildMemberRoleRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  fixed64 role_id = 2 [jstype = JS_STRING];
+  google.protobuf.StringValue audit_log_reason = 3;
+}
+
+message RemoveGuildMemberRoleResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Remove Guild Member
+
+message RemoveGuildMemberRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue audit_log_reason = 2;
+}
+
+message RemoveGuildMemberResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Guild Bans
+
+message GetGuildBansRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildBansResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.GuildBanData bans = 1; }
+}
+
+// Get Guild Ban
+
+message GetGuildBanRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildBanResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.GuildBanData ban = 1; }
+}
+
+// Create Guild Ban
+
+message CreateGuildBanRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  google.protobuf.UInt32Value delete_message_days = 2;
+  google.protobuf.StringValue audit_log_reason = 3;
+}
+
+message CreateGuildBanResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Remove Guild Ban
+
+message RemoveGuildBanRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue audit_log_reason = 3;
+}
+
+message RemoveGuildBanResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Create Guild Role
+
+message CreateGuildRoleRequest {
+  google.protobuf.StringValue name = 1;
+  pylon.discord.v1.model.PermissionsValue permissions = 2;
+  google.protobuf.UInt32Value color = 3;
+  google.protobuf.BoolValue hoist = 4;
+  google.protobuf.BoolValue mentionable = 5;
+}
+
+message CreateGuildRoleResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.RoleData role = 1; }
+}
+
+// Modify Guild Role Positions
+
+message ModifyGuildRolePositionsRequest {
+  repeated RolePosition role_positions = 1;
+
+  message RolePosition {
+    fixed64 id = 1 [jstype = JS_STRING];
+    uint32 position = 2;
+  }
+}
+
+message ModifyGuildRolePositionsResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.RoleData roles = 1; }
+}
+
+// Modify Guild Role
+
+message ModifyGuildRoleRequest {
+  fixed64 role_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue name = 2;
+  pylon.discord.v1.model.PermissionsValue permissions = 3;
+  google.protobuf.UInt32Value color = 4;
+  google.protobuf.BoolValue hoist = 5;
+  google.protobuf.BoolValue mentionable = 6;
+}
+
+message ModifyGuildRoleResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.RoleData role = 1; }
+}
+
+// Delete Guild Role
+
+message DeleteGuildRoleRequest { fixed64 role_id = 1 [jstype = JS_STRING]; }
+
+message DeleteGuildRoleResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Guild Prune Count
+
+message GetGuildPruneCountRequest {
+  google.protobuf.UInt32Value days = 1;
+  pylon.discord.v1.model.SnowflakeListValue include_roles = 2;
+}
+
+message GetGuildPruneCountResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Begin Guild Prune
+
+message BeginGuildPruneRequest {
+  google.protobuf.UInt32Value days = 1;
+  pylon.discord.v1.model.SnowflakeListValue include_roles = 2;
+  google.protobuf.BoolValue compute_prune_count = 3;
+}
+
+message BeginGuildPruneResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Guild Voice Regions
+
+message GetGuildVoiceRegionsRequest {}
+
+message GetGuildVoiceRegionsResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated string regions = 1; }
+}
+
+// Get Guild Invites
+
+message GetGuildInvitesRequest {}
+
+message GetGuildInvitesResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.InviteData invites = 1; }
+}
+
+// Modify Channel
+
+message ModifyChannelRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue name = 2;
+  pylon.discord.v1.model.ChannelData.ChannelType type = 3;
+  google.protobuf.UInt32Value position = 4;
+  google.protobuf.StringValue topic = 5;
+  google.protobuf.BoolValue nsfw = 6;
+  google.protobuf.UInt32Value rate_limit_per_user = 7;
+  google.protobuf.UInt32Value bitrate = 8;
+  google.protobuf.UInt32Value user_limit = 9;
+  ChannelPermissionOverwritesValue permission_overwrites = 10;
+  pylon.discord.v1.model.SnowflakeValue parent_id = 11;
+
+  message ChannelPermissionOverwritesValue {
+    repeated pylon.discord.v1.model.ChannelData
+        .ChannelPermissionOverwriteData values = 1;
+  }
+}
+
+message ModifyChannelResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+}
+
+// Delete Channel
+
+message DeleteChannelRequest { fixed64 channel_id = 1 [jstype = JS_STRING]; }
+
+message DeleteChannelResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Create Message
+
+message CreateMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  string content = 2;
+  google.protobuf.StringValue nonce = 3;
+  google.protobuf.BoolValue tts = 4;
+  pylon.discord.v1.model.MessageData.MessageEmbedData embed = 5;
+  AllowedMentions allowed_mentions = 6;
+  Attachment attachment = 7;
+
+  message AllowedMentions {
+    AllowedMentionTypes parse = 1;
+    pylon.discord.v1.model.SnowflakeListValue roles = 2;
+    pylon.discord.v1.model.SnowflakeListValue users = 3;
+
+    message AllowedMentionTypes {
+      bool roles = 1;
+      bool users = 2;
+      bool everyone = 3;
+    }
+  }
+
+  message Attachment {
+    string name = 1;
+    bytes content = 2;
+  }
+}
+
+message CreateMessageResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.MessageData message = 1; }
+}
+
+// Crosspost Message
+
+message CrosspostMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message CrosspostMessageResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.MessageData message = 1; }
+}
+
+// Create Reaction
+
+message CreateReactionRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+  string emoji = 3;
+}
+
+message CreateReactionResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Delete Own Reaction
+
+message DeleteOwnReactionRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+  string emoji = 3;
+}
+
+message DeleteOwnReactionResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Delete User Reaction
+
+message DeleteUserReactionRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+  string emoji = 3;
+  fixed64 user_id = 4 [jstype = JS_STRING];
+}
+
+message DeleteUserReactionResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Delete User Reaction
+
+message DeleteAllReactionsRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message DeleteAllReactionsResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Delete All Reactions for Emoji
+
+message DeleteAllReactionsForEmojiRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+  string emoji = 3;
+}
+
+message DeleteAllReactionsForEmojiResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Edit Message
+
+message EditMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+  google.protobuf.StringValue content = 3;
+  pylon.discord.v1.model.MessageData.MessageEmbedData embed = 4;
+  google.protobuf.UInt32Value flags = 5;
+}
+
+message EditMessageResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.MessageData message = 1; }
+}
+
+// Delete Message
+
+message DeleteMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message DeleteMessageResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Bulk Delete Messages
+
+message BulkDeleteMessagesRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  repeated fixed64 message_ids = 2 [jstype = JS_STRING];
+}
+
+message BulkDeleteMessagesResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Edit Channel Permissions
+
+message EditChannelPermissionsRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 overwrite_id = 2 [jstype = JS_STRING];
+  uint64 allow = 3 [jstype = JS_STRING];
+  uint64 deny = 4 [jstype = JS_STRING];
+  pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData
+      .ChannelPermissionOverwriteType type = 5;
+}
+
+message EditChannelPermissionsResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Channel Invites
+
+message GetChannelInvitesRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
+
+message GetChannelInvitesResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.InviteData invites = 1; }
+}
+
+// Create Channel Invite
+
+message CreateChannelInviteRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  google.protobuf.UInt32Value max_age = 2;
+  google.protobuf.UInt32Value max_uses = 3;
+  google.protobuf.BoolValue temporary = 4;
+  google.protobuf.BoolValue unique = 5;
+  pylon.discord.v1.model.SnowflakeValue target_user = 6;
+  google.protobuf.UInt32Value target_user_type = 7; // todo: enum
+}
+
+message CreateChannelInviteResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.InviteData invite = 1; }
+}
+
+// Delete Channel Permission
+
+message DeleteChannelPermissionRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 overwrite_id = 2 [jstype = JS_STRING];
+}
+
+message DeleteChannelPermissionResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Follow News Channel
+
+message FollowNewsChannelRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 webhook_channel_id = 2 [jstype = JS_STRING];
+}
+
+message FollowNewsChannelResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    fixed64 webhook_id = 2 [jstype = JS_STRING];
+  }
+}
+
+// Trigger Typing Indicator
+
+message TriggerTypingIndicatorRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
+
+message TriggerTypingIndicatorResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Pinned Messages
+
+message GetPinnedMessagesRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
+
+message GetPinnedMessagesResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.MessageData messages = 1; }
+}
+
+// Add Pinned Channel Message
+
+message AddPinnedChannelMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message AddPinnedChannelMessageResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Delete Pinned Channel Message
+
+message DeletePinnedChannelMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message DeletePinnedChannelMessageResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// List Guild Emojis
+
+message ListGuildEmojisRequest {}
+
+message ListGuildEmojisResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { repeated pylon.discord.v1.model.EmojiData emojis = 1; }
+}
+
+// Get Guild Emoji
+
+message GetGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildEmojiResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+}
+
+// Create Guild Emoji
+
+message CreateGuildEmojiRequest {
+  string name = 1;
+  pylon.discord.v1.model.ImageData image = 2;
+  pylon.discord.v1.model.SnowflakeListValue roles = 3;
+}
+
+message CreateGuildEmojiResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+}
+
+// Modify Guild Emoji
+
+message ModifyGuildEmojiRequest {
+  fixed64 emoji_id = 1 [jstype = JS_STRING];
+  google.protobuf.StringValue name = 2;
+  pylon.discord.v1.model.SnowflakeListValue roles = 3;
+}
+
+message ModifyGuildEmojiResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+}
+
+// Delete Guild Emoji
+
+message DeleteGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+
+message DeleteGuildEmojiResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Get Current User
+
+message GetCurrentUserRequest {}
+
+message GetCurrentUserResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.UserData user = 1; }
+}
+
+// Get User
+
+message GetUserRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+
+message GetUserResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.UserData user = 1; }
+}
+
+// Modify Current User
+
+message ModifyCurrentUserRequest {
+  google.protobuf.StringValue username = 1;
+  pylon.discord.v1.model.ImageData avatar = 2;
+}
+
+message ModifyCurrentUserResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.UserData user = 1; }
+}
+
+// Leave Guild
+
+message LeaveGuildRequest {}
+
+message LeaveGuildResponse {
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
+}
+
+// Create DM
+
+message CreateDmRequest { fixed64 recipient_id = 1 [jstype = JS_STRING]; }
+
+message CreateDmResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+}

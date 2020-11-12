@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+package pylon.gateway.v1.cacheservice;
+option java_package = "bot.pylon.proto.gateway.v1.cacheservice";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/cacheservice";
+
+import "discord/v1/model.proto";
+
+// GetGuild
+
+message GetGuildRequest {}
+
+message GetGuildResponse { pylon.discord.v1.model.GuildData guild = 1; }
+
+// ListGuildChannels
+
+message ListGuildChannelsRequest {}
+
+message ListGuildChannelsResponse {
+  repeated pylon.discord.v1.model.ChannelData channels = 1;
+}
+
+// GetGuildChannel
+
+message GetGuildChannelRequest { fixed64 channel_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildChannelResponse {
+  pylon.discord.v1.model.ChannelData channel = 1;
+}
+
+// ListGuildMembers
+
+message ListGuildMembersRequest {
+  fixed64 after = 1 [jstype = JS_STRING];
+  uint32 limit = 2;
+}
+
+message ListGuildMembersResponse {
+  repeated pylon.discord.v1.model.MemberData members = 1;
+}
+
+// GetGuildMember
+
+message GetGuildMemberRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildMemberResponse { pylon.discord.v1.model.MemberData member = 1; }
+
+// ListGuildRoles
+
+message ListGuildRolesRequest {}
+
+message ListGuildRolesResponse {
+  repeated pylon.discord.v1.model.RoleData roles = 1;
+}
+
+// GetGuildRole
+
+message GetGuildRoleRequest { fixed64 role_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildRoleResponse { pylon.discord.v1.model.RoleData role = 1; }
+
+// ListGuildEmojis
+
+message ListGuildEmojisRequest {}
+
+message ListGuildEmojisResponse {
+  repeated pylon.discord.v1.model.EmojiData emojis = 1;
+}
+
+// GetGuildEmoji
+
+message GetGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+
+message GetGuildEmojiResponse { pylon.discord.v1.model.EmojiData emoji = 1; }
+
+// GetUser
+
+message GetUserRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+
+message GetUserResponse { pylon.discord.v1.model.UserData user = 1; }
+
+// GetGuildMemberVoiceState
+
+message GetGuildMemberVoiceStateRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
+
+message GetGuildMemberVoiceStateResponse {
+  pylon.discord.v1.model.VoiceStateData voice_state_data = 1;
+}
+
+// ListGuildChannelVoiceStates
+
+message ListGuildChannelVoiceStatesRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
+
+message ListGuildChannelVoiceStatesResponse {
+  repeated pylon.discord.v1.model.VoiceStateData voice_states_data = 1;
+}
+
+service GatewayCache {
+  // Guilds
+  rpc GetGuild(GetGuildRequest) returns(GetGuildResponse);
+
+  // Channels
+  rpc ListGuildChannels(ListGuildChannelsRequest)
+      returns(ListGuildChannelsResponse);
+  rpc GetGuildChannel(GetGuildChannelRequest) returns(GetGuildChannelResponse);
+
+  // Guild Members
+  rpc ListGuildMembers(ListGuildMembersRequest)
+      returns(ListGuildMembersResponse);
+  rpc GetGuildMember(GetGuildMemberRequest) returns(GetGuildMemberResponse);
+
+  // Guild Member Properties
+  rpc ListGuildRoles(ListGuildRolesRequest) returns(ListGuildRolesResponse);
+  rpc GetGuildRole(GetGuildRoleRequest) returns(GetGuildRoleResponse);
+
+  // Emojis
+  rpc ListGuildEmojis(ListGuildEmojisRequest) returns(ListGuildEmojisResponse);
+  rpc GetGuildEmoji(GetGuildEmojiRequest) returns(GetGuildEmojiResponse);
+
+  // Users
+  rpc GetUser(GetUserRequest) returns(GetUserResponse);
+
+  // VoiceStates
+  rpc GetGuildMemberVoiceState(GetGuildMemberVoiceStateRequest)
+      returns(GetGuildMemberVoiceStateResponse);
+  rpc ListGuildChannelVoiceStates(ListGuildChannelVoiceStatesRequest)
+      returns(ListGuildChannelVoiceStatesResponse);
+}
