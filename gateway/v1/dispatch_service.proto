@@ -1,91 +1,87 @@
 syntax = "proto3";
 
-package pylon.gateway.v1.dispatchservice;
-option java_package = "bot.pylon.proto.gateway.v1.dispatchservice";
+package pylon.gateway.v1.service;
+option java_package = "bot.pylon.proto.gateway.v1.service";
 option java_multiple_files = true;
 option go_package =
-    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/dispatchservice";
+    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/service";
 
 import "discord/v1/event.proto";
 
-message EventResponse {}
-
-message InteractionEventResponse {}
-
 service GatewayDispatch {
   rpc GuildCreate(pylon.discord.v1.event.GuildCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildUpdate(pylon.discord.v1.event.GuildUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildDelete(pylon.discord.v1.event.GuildDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc PresenceUpdate(pylon.discord.v1.event.PresenceUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildMemberAdd(pylon.discord.v1.event.GuildMemberAddEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildMemberUpdate(pylon.discord.v1.event.GuildMemberUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildMemberRemove(pylon.discord.v1.event.GuildMemberRemoveEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc ChannelCreate(pylon.discord.v1.event.ChannelCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc ChannelUpdate(pylon.discord.v1.event.ChannelUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc ChannelDelete(pylon.discord.v1.event.ChannelDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc ChannelPinsUpdate(pylon.discord.v1.event.ChannelPinsUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildRoleCreate(pylon.discord.v1.event.GuildRoleCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildRoleUpdate(pylon.discord.v1.event.GuildRoleUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildRoleDelete(pylon.discord.v1.event.GuildRoleDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageCreate(pylon.discord.v1.event.MessageCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageUpdate(pylon.discord.v1.event.MessageUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageDelete(pylon.discord.v1.event.MessageDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageDeleteBulk(pylon.discord.v1.event.MessageDeleteBulkEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageReactionAdd(pylon.discord.v1.event.MessageReactionAddEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageReactionRemove(pylon.discord.v1.event.MessageReactionRemoveEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageReactionRemoveAll(
       pylon.discord.v1.event.MessageReactionRemoveAllEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc MessageReactionRemoveEmoji(
       pylon.discord.v1.event.MessageReactionRemoveEmojiEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc TypingStart(pylon.discord.v1.event.TypingStartEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc VoiceStateUpdate(pylon.discord.v1.event.VoiceStateUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc VoiceServerUpdate(pylon.discord.v1.event.VoiceServerUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc InviteCreate(pylon.discord.v1.event.InviteCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc InviteDelete(pylon.discord.v1.event.InviteDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildBanAdd(pylon.discord.v1.event.GuildBanAddEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildBanRemove(pylon.discord.v1.event.GuildBanRemoveEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildEmojisUpdate(pylon.discord.v1.event.GuildEmojisUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc GuildIntegrationsUpdate(
       pylon.discord.v1.event.GuildIntegrationsUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc WebhooksUpdate(pylon.discord.v1.event.WebhooksUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc IntegrationCreate(pylon.discord.v1.event.IntegrationCreateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc IntegrationUpdate(pylon.discord.v1.event.IntegrationUpdateEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc IntegrationDelete(pylon.discord.v1.event.IntegrationDeleteEvent)
-      returns(EventResponse);
+      returns(pylon.discord.v1.event.EventResponse);
   rpc InteractionCreate(pylon.discord.v1.event.InteractionCreateEvent)
-      returns(InteractionEventResponse);
+      returns(pylon.discord.v1.event.InteractionResponse);
 }

@@ -78,28 +78,34 @@ message ChannelPinsUpdateEvent {
     google.protobuf.Timestamp last_pin_timestamp = 3;
   }
 }
+
 message GuildRoleCreateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.RoleData payload = 2;
 }
+
 message GuildRoleUpdateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.RoleData payload = 2;
   pylon.discord.v1.model.RoleData previously_cached = 3;
 }
+
 message GuildRoleDeleteEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.RoleData payload = 2;
 }
+
 message MessageCreateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.MessageData message = 2;
 }
+
 message MessageUpdateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.MessageData payload = 2;
   pylon.discord.v1.model.MessageData previously_cached = 3;
 }
+
 message MessageDeleteEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -111,6 +117,7 @@ message MessageDeleteEvent {
     fixed64 guild_id = 3 [jstype = JS_STRING];
   }
 }
+
 message MessageDeleteBulkEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -121,6 +128,7 @@ message MessageDeleteBulkEvent {
     fixed64 guild_id = 3;
   }
 }
+
 message MessageReactionAddEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -134,6 +142,7 @@ message MessageReactionAddEvent {
     pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 6;
   }
 }
+
 message MessageReactionRemoveEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -146,6 +155,7 @@ message MessageReactionRemoveEvent {
     pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 5;
   }
 }
+
 message MessageReactionRemoveAllEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -156,6 +166,7 @@ message MessageReactionRemoveAllEvent {
     fixed64 guild_id = 3 [jstype = JS_STRING];
   }
 }
+
 message MessageReactionRemoveEmojiEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -167,6 +178,7 @@ message MessageReactionRemoveEmojiEvent {
     pylon.discord.v1.model.MessageData.MessageReactionEmojiData emoji = 4;
   }
 }
+
 message TypingStartEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -178,11 +190,13 @@ message TypingStartEvent {
     pylon.discord.v1.model.MemberData member = 4;
   }
 }
+
 message VoiceStateUpdateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.VoiceStateData payload = 2;
   pylon.discord.v1.model.VoiceStateData previously_cached = 3;
 }
+
 message VoiceServerUpdateEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -193,10 +207,12 @@ message VoiceServerUpdateEvent {
     string endpoint = 3;
   }
 }
+
 message InviteCreateEvent {
   EventScope scope = 1;
   pylon.discord.v1.model.InviteData payload = 2;
 }
+
 message InviteDeleteEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -207,6 +223,7 @@ message InviteDeleteEvent {
     string code = 3;
   }
 }
+
 message GuildBanAddEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -216,6 +233,7 @@ message GuildBanAddEvent {
     pylon.discord.v1.model.UserData user = 2;
   }
 }
+
 message GuildBanRemoveEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -225,6 +243,7 @@ message GuildBanRemoveEvent {
     pylon.discord.v1.model.UserData user = 2;
   }
 }
+
 message GuildEmojisUpdateEvent {
   EventScope scope = 1;
   Payload payload = 2;
@@ -235,39 +254,49 @@ message GuildEmojisUpdateEvent {
     repeated pylon.discord.v1.model.EmojiData emojis = 2;
   }
 }
+
 message GuildIntegrationsUpdateEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
 message WebhooksUpdateEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
 message IntegrationCreateEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
 message IntegrationUpdateEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
 message IntegrationDeleteEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
 message InteractionCreateEvent {
   EventScope scope = 1;
   Payload payload = 2;
 
   message Payload { sfixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
+
+message EventResponse {}
+
+message InteractionResponse {}
