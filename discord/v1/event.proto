@@ -8,6 +8,7 @@ option go_package =
 
 import "discord/v1/model.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 message EventScope {
   fixed64 bot_id = 1 [jstype = JS_STRING];
@@ -102,8 +103,41 @@ message MessageCreateEvent {
 
 message MessageUpdateEvent {
   EventScope scope = 1;
-  pylon.discord.v1.model.MessageData payload = 2;
+  oneof payload {
+    pylon.discord.v1.model.MessageData cached = 2;
+    Payload raw = 4;
+  };
   pylon.discord.v1.model.MessageData previously_cached = 3;
+
+  message Payload {
+    fixed64 id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    pylon.discord.v1.model.SnowflakeValue guild_id = 3;
+    google.protobuf.StringValue content = 4;
+    google.protobuf.Timestamp edited_timestamp = 5;
+    pylon.discord.v1.model.SnowflakeListValue mention_roles = 6;
+    google.protobuf.BoolValue tts = 7;
+    google.protobuf.BoolValue mention_everyone = 8;
+    repeated pylon.discord.v1.model.MessageData
+        .MessageAttachmentData attachments = 9;
+    repeated pylon.discord.v1.model.MessageData.MessageEmbedData embeds = 10;
+    repeated pylon.discord.v1.model.MessageData.MessageMentionData mentions =
+        11;
+    repeated pylon.discord.v1.model.MessageData.MessageReactionData reactions =
+        12;
+    google.protobuf.BoolValue pinned = 13;
+    pylon.discord.v1.model.MessageData.MessageType type = 14;
+    repeated pylon.discord.v1.model.MessageData
+        .MessageMentionChannelData mention_channels = 15;
+    google.protobuf.UInt32Value flags = 16;
+    pylon.discord.v1.model.MessageData.MessageActivityData activity = 17;
+    pylon.discord.v1.model.MessageData.MessageApplicationData application = 18;
+    pylon.discord.v1.model.MessageData.MessageReferenceData message_reference =
+        19;
+    pylon.discord.v1.model.UserData author = 20;
+    pylon.discord.v1.model.MemberData member = 21;
+    pylon.discord.v1.model.SnowflakeValue webhook_id = 22;
+  }
 }
 
 message MessageDeleteEvent {

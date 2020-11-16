@@ -131,28 +131,29 @@ message VoiceStateData {
 }
 
 message MessageData {
-  fixed64 channel_id = 1 [jstype = JS_STRING];
-  SnowflakeValue guild_id = 2;
-  string content = 3;
-  google.protobuf.Timestamp timestamp = 4;
-  google.protobuf.Timestamp edited_timestamp = 5;
-  SnowflakeListValue mention_roles = 6;
-  bool tts = 7;
-  bool mention_everyone = 8;
-  repeated MessageAttachmentData attachments = 9;
-  repeated MessageEmbedData embeds = 10;
-  repeated MessageMentionData mentions = 11;
-  repeated MessageReactionData reactions = 12;
-  bool pinned = 13;
-  MessageType type = 14;
-  repeated MessageMentionChannelData mention_channels = 15;
-  uint32 flags = 16;
-  MessageActivityData activity = 17;
-  MessageApplicationData application = 18;
-  MessageReferenceData message_reference = 19;
-  UserData author = 20;
-  MemberData member = 21;
-  SnowflakeValue webhook_id = 22;
+  fixed64 id = 1 [jstype = JS_STRING];
+  fixed64 channel_id = 2 [jstype = JS_STRING];
+  SnowflakeValue guild_id = 3;
+  string content = 4;
+  google.protobuf.Timestamp timestamp = 5;
+  google.protobuf.Timestamp edited_timestamp = 6;
+  SnowflakeListValue mention_roles = 7;
+  bool tts = 8;
+  bool mention_everyone = 9;
+  repeated MessageAttachmentData attachments = 10;
+  repeated MessageEmbedData embeds = 11;
+  repeated MessageMentionData mentions = 12;
+  repeated MessageReactionData reactions = 13;
+  bool pinned = 14;
+  MessageType type = 15;
+  repeated MessageMentionChannelData mention_channels = 16;
+  uint32 flags = 17;
+  MessageActivityData activity = 18;
+  MessageApplicationData application = 19;
+  MessageReferenceData message_reference = 20;
+  UserData author = 21;
+  MemberData member = 22;
+  SnowflakeValue webhook_id = 23;
 
   enum MessageType {
     UNKNOWN = 0; DEFAULT = 1; RECIPIENT_ADD = 2; RECIPIENT_REMOVE = 3; CALL = 4;
