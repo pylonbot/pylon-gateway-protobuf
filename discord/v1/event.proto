@@ -71,9 +71,9 @@ message ChannelDeleteEvent {
 
 message ChannelPinsUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 channel_id = 1 [jstype = JS_STRING];
     fixed64 guild_id = 2 [jstype = JS_STRING];
     google.protobuf.Timestamp last_pin_timestamp = 3;
@@ -105,11 +105,11 @@ message MessageUpdateEvent {
   EventScope scope = 1;
   oneof payload {
     pylon.discord.v1.model.MessageData cached = 2;
-    Payload raw = 4;
+    PayloadData raw = 4;
   };
   pylon.discord.v1.model.MessageData previously_cached = 3;
 
-  message Payload {
+  message PayloadData {
     fixed64 id = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2 [jstype = JS_STRING];
     pylon.discord.v1.model.SnowflakeValue guild_id = 3;
@@ -142,10 +142,10 @@ message MessageUpdateEvent {
 
 message MessageDeleteEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
   pylon.discord.v1.model.MessageData previously_cached = 3;
 
-  message Payload {
+  message PayloadData {
     fixed64 id = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2 [jstype = JS_STRING];
     fixed64 guild_id = 3 [jstype = JS_STRING];
@@ -154,9 +154,9 @@ message MessageDeleteEvent {
 
 message MessageDeleteBulkEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     repeated fixed64 ids = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2;
     fixed64 guild_id = 3;
@@ -165,9 +165,9 @@ message MessageDeleteBulkEvent {
 
 message MessageReactionAddEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 user_id = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2 [jstype = JS_STRING];
     fixed64 message_id = 3 [jstype = JS_STRING];
@@ -179,9 +179,9 @@ message MessageReactionAddEvent {
 
 message MessageReactionRemoveEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 user_id = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2 [jstype = JS_STRING];
     fixed64 message_id = 3 [jstype = JS_STRING];
@@ -192,9 +192,9 @@ message MessageReactionRemoveEvent {
 
 message MessageReactionRemoveAllEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 channel_id = 1 [jstype = JS_STRING];
     fixed64 message_id = 2 [jstype = JS_STRING];
     fixed64 guild_id = 3 [jstype = JS_STRING];
@@ -203,9 +203,9 @@ message MessageReactionRemoveAllEvent {
 
 message MessageReactionRemoveEmojiEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 channel_id = 1 [jstype = JS_STRING];
     fixed64 message_id = 2 [jstype = JS_STRING];
     fixed64 guild_id = 3 [jstype = JS_STRING];
@@ -215,9 +215,9 @@ message MessageReactionRemoveEmojiEvent {
 
 message TypingStartEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 channel_id = 1 [jstype = JS_STRING];
     fixed64 user_id = 2 [jstype = JS_STRING];
     google.protobuf.Timestamp timestamp = 3;
@@ -233,9 +233,9 @@ message VoiceStateUpdateEvent {
 
 message VoiceServerUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 guild_id = 1 [jstype = JS_STRING];
     string token = 2;
     string endpoint = 3;
@@ -249,9 +249,9 @@ message InviteCreateEvent {
 
 message InviteDeleteEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 guild_id = 1 [jstype = JS_STRING];
     fixed64 channel_id = 2 [jstype = JS_STRING];
     string code = 3;
@@ -260,9 +260,9 @@ message InviteDeleteEvent {
 
 message GuildBanAddEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 guild_id = 1 [jstype = JS_STRING];
     pylon.discord.v1.model.UserData user = 2;
   }
@@ -270,9 +270,9 @@ message GuildBanAddEvent {
 
 message GuildBanRemoveEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload {
+  message PayloadData {
     fixed64 guild_id = 1 [jstype = JS_STRING];
     pylon.discord.v1.model.UserData user = 2;
   }
@@ -280,10 +280,10 @@ message GuildBanRemoveEvent {
 
 message GuildEmojisUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
-  Payload previously_cached = 3;
+  PayloadData payload = 2;
+  PayloadData previously_cached = 3;
 
-  message Payload {
+  message PayloadData {
     fixed64 guild_id = 1 [jstype = JS_STRING];
     repeated pylon.discord.v1.model.EmojiData emojis = 2;
   }
@@ -291,44 +291,44 @@ message GuildEmojisUpdateEvent {
 
 message GuildIntegrationsUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message WebhooksUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message IntegrationCreateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message IntegrationUpdateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message IntegrationDeleteEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message InteractionCreateEvent {
   EventScope scope = 1;
-  Payload payload = 2;
+  PayloadData payload = 2;
 
-  message Payload { sfixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData { sfixed64 guild_id = 1 [jstype = JS_STRING]; }
 }
 
 message EventResponse {}
