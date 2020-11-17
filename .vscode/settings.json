@@ -1,0 +1,6 @@
+{
+    "[proto3]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "clang-format.language.proto.style": "{ BasedOnStyle: Google, ColumnLimit: 0 }"
+}

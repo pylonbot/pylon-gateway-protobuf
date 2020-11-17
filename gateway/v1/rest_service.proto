@@ -10,116 +10,107 @@ import "discord/v1/rest.proto";
 
 service GatewayRest {
   rpc ModifyGuild(pylon.discord.v1.rest.ModifyGuildRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildResponse);
+      returns (pylon.discord.v1.rest.ModifyGuildResponse);
   rpc CreateGuildChannel(pylon.discord.v1.rest.CreateGuildChannelRequest)
-      returns(pylon.discord.v1.rest.CreateGuildChannelResponse);
-  rpc ModifyGuildChannelPositions(
-      pylon.discord.v1.rest.ModifyGuildChannelPositionsRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildChannelPositionsResponse);
+      returns (pylon.discord.v1.rest.CreateGuildChannelResponse);
+  rpc ModifyGuildChannelPositions(pylon.discord.v1.rest.ModifyGuildChannelPositionsRequest)
+      returns (pylon.discord.v1.rest.ModifyGuildChannelPositionsResponse);
   rpc AddGuildMember(pylon.discord.v1.rest.AddGuildMemberRequest)
-      returns(pylon.discord.v1.rest.AddGuildMemberResponse);
+      returns (pylon.discord.v1.rest.AddGuildMemberResponse);
   rpc ModifyGuildMember(pylon.discord.v1.rest.ModifyGuildMemberRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildMemberResponse);
+      returns (pylon.discord.v1.rest.ModifyGuildMemberResponse);
   rpc ModifyCurrentUserNick(pylon.discord.v1.rest.ModifyCurrentUserNickRequest)
-      returns(pylon.discord.v1.rest.ModifyCurrentUserNickResponse);
+      returns (pylon.discord.v1.rest.ModifyCurrentUserNickResponse);
   rpc AddGuildMemberRole(pylon.discord.v1.rest.AddGuildMemberRoleRequest)
-      returns(pylon.discord.v1.rest.AddGuildMemberRoleResponse);
+      returns (pylon.discord.v1.rest.AddGuildMemberRoleResponse);
   rpc RemoveGuildMemberRole(pylon.discord.v1.rest.RemoveGuildMemberRoleRequest)
-      returns(pylon.discord.v1.rest.RemoveGuildMemberRoleResponse);
+      returns (pylon.discord.v1.rest.RemoveGuildMemberRoleResponse);
   rpc RemoveGuildMember(pylon.discord.v1.rest.RemoveGuildMemberRequest)
-      returns(pylon.discord.v1.rest.RemoveGuildMemberResponse);
+      returns (pylon.discord.v1.rest.RemoveGuildMemberResponse);
   rpc GetGuildBans(pylon.discord.v1.rest.GetGuildBansRequest)
-      returns(pylon.discord.v1.rest.GetGuildBansResponse);
+      returns (pylon.discord.v1.rest.GetGuildBansResponse);
   rpc GetGuildBan(pylon.discord.v1.rest.GetGuildBanRequest)
-      returns(pylon.discord.v1.rest.GetGuildBanResponse);
+      returns (pylon.discord.v1.rest.GetGuildBanResponse);
   rpc CreateGuildBan(pylon.discord.v1.rest.CreateGuildBanRequest)
-      returns(pylon.discord.v1.rest.CreateGuildBanResponse);
+      returns (pylon.discord.v1.rest.CreateGuildBanResponse);
   rpc RemoveGuildBan(pylon.discord.v1.rest.RemoveGuildBanRequest)
-      returns(pylon.discord.v1.rest.RemoveGuildBanResponse);
+      returns (pylon.discord.v1.rest.RemoveGuildBanResponse);
   rpc CreateGuildRole(pylon.discord.v1.rest.CreateGuildRoleRequest)
-      returns(pylon.discord.v1.rest.CreateGuildRoleResponse);
-  rpc ModifyGuildRolePositions(
-      pylon.discord.v1.rest.ModifyGuildRolePositionsRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildRolePositionsResponse);
+      returns (pylon.discord.v1.rest.CreateGuildRoleResponse);
+  rpc ModifyGuildRolePositions(pylon.discord.v1.rest.ModifyGuildRolePositionsRequest)
+      returns (pylon.discord.v1.rest.ModifyGuildRolePositionsResponse);
   rpc ModifyGuildRole(pylon.discord.v1.rest.ModifyGuildRoleRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildRoleResponse);
+      returns (pylon.discord.v1.rest.ModifyGuildRoleResponse);
   rpc DeleteGuildRole(pylon.discord.v1.rest.DeleteGuildRoleRequest)
-      returns(pylon.discord.v1.rest.DeleteGuildRoleResponse);
+      returns (pylon.discord.v1.rest.DeleteGuildRoleResponse);
   rpc GetGuildPruneCount(pylon.discord.v1.rest.GetGuildPruneCountRequest)
-      returns(pylon.discord.v1.rest.GetGuildPruneCountResponse);
+      returns (pylon.discord.v1.rest.GetGuildPruneCountResponse);
   rpc BeginGuildPrune(pylon.discord.v1.rest.BeginGuildPruneRequest)
-      returns(pylon.discord.v1.rest.BeginGuildPruneResponse);
+      returns (pylon.discord.v1.rest.BeginGuildPruneResponse);
   rpc GetGuildVoiceRegions(pylon.discord.v1.rest.GetGuildVoiceRegionsRequest)
-      returns(pylon.discord.v1.rest.GetGuildVoiceRegionsResponse);
+      returns (pylon.discord.v1.rest.GetGuildVoiceRegionsResponse);
   rpc GetGuildInvites(pylon.discord.v1.rest.GetGuildInvitesRequest)
-      returns(pylon.discord.v1.rest.GetGuildInvitesResponse);
-
+      returns (pylon.discord.v1.rest.GetGuildInvitesResponse);
   rpc ModifyChannel(pylon.discord.v1.rest.ModifyChannelRequest)
-      returns(pylon.discord.v1.rest.ModifyChannelResponse);
+      returns (pylon.discord.v1.rest.ModifyChannelResponse);
   rpc DeleteChannel(pylon.discord.v1.rest.DeleteChannelRequest)
-      returns(pylon.discord.v1.rest.DeleteChannelResponse);
+      returns (pylon.discord.v1.rest.DeleteChannelResponse);
   rpc CreateMessage(pylon.discord.v1.rest.CreateMessageRequest)
-      returns(pylon.discord.v1.rest.CreateMessageResponse);
+      returns (pylon.discord.v1.rest.CreateMessageResponse);
   rpc CrosspostMessage(pylon.discord.v1.rest.CrosspostMessageRequest)
-      returns(pylon.discord.v1.rest.CrosspostMessageResponse);
+      returns (pylon.discord.v1.rest.CrosspostMessageResponse);
   rpc CreateReaction(pylon.discord.v1.rest.CreateReactionRequest)
-      returns(pylon.discord.v1.rest.CreateReactionResponse);
+      returns (pylon.discord.v1.rest.CreateReactionResponse);
   rpc DeleteOwnReaction(pylon.discord.v1.rest.DeleteOwnReactionRequest)
-      returns(pylon.discord.v1.rest.DeleteOwnReactionResponse);
+      returns (pylon.discord.v1.rest.DeleteOwnReactionResponse);
   rpc DeleteUserReaction(pylon.discord.v1.rest.DeleteUserReactionRequest)
-      returns(pylon.discord.v1.rest.DeleteUserReactionResponse);
+      returns (pylon.discord.v1.rest.DeleteUserReactionResponse);
   rpc DeleteAllReactions(pylon.discord.v1.rest.DeleteAllReactionsRequest)
-      returns(pylon.discord.v1.rest.DeleteAllReactionsResponse);
-  rpc DeleteAllReactionsForEmoji(
-      pylon.discord.v1.rest.DeleteAllReactionsForEmojiRequest)
-      returns(pylon.discord.v1.rest.DeleteAllReactionsForEmojiResponse);
+      returns (pylon.discord.v1.rest.DeleteAllReactionsResponse);
+  rpc DeleteAllReactionsForEmoji(pylon.discord.v1.rest.DeleteAllReactionsForEmojiRequest)
+      returns (pylon.discord.v1.rest.DeleteAllReactionsForEmojiResponse);
   rpc EditMessage(pylon.discord.v1.rest.EditMessageRequest)
-      returns(pylon.discord.v1.rest.EditMessageResponse);
+      returns (pylon.discord.v1.rest.EditMessageResponse);
   rpc DeleteMessage(pylon.discord.v1.rest.DeleteMessageRequest)
-      returns(pylon.discord.v1.rest.DeleteMessageResponse);
+      returns (pylon.discord.v1.rest.DeleteMessageResponse);
   rpc BulkDeleteMessages(pylon.discord.v1.rest.BulkDeleteMessagesRequest)
-      returns(pylon.discord.v1.rest.BulkDeleteMessagesResponse);
-  rpc EditChannelPermissions(
-      pylon.discord.v1.rest.EditChannelPermissionsRequest)
-      returns(pylon.discord.v1.rest.EditChannelPermissionsResponse);
+      returns (pylon.discord.v1.rest.BulkDeleteMessagesResponse);
+  rpc EditChannelPermissions(pylon.discord.v1.rest.EditChannelPermissionsRequest)
+      returns (pylon.discord.v1.rest.EditChannelPermissionsResponse);
   rpc GetChannelInvites(pylon.discord.v1.rest.GetChannelInvitesRequest)
-      returns(pylon.discord.v1.rest.GetChannelInvitesResponse);
+      returns (pylon.discord.v1.rest.GetChannelInvitesResponse);
   rpc CreateChannelInvite(pylon.discord.v1.rest.CreateChannelInviteRequest)
-      returns(pylon.discord.v1.rest.CreateChannelInviteResponse);
-  rpc DeleteChannelPermission(
-      pylon.discord.v1.rest.DeleteChannelPermissionRequest)
-      returns(pylon.discord.v1.rest.DeleteChannelPermissionResponse);
+      returns (pylon.discord.v1.rest.CreateChannelInviteResponse);
+  rpc DeleteChannelPermission(pylon.discord.v1.rest.DeleteChannelPermissionRequest)
+      returns (pylon.discord.v1.rest.DeleteChannelPermissionResponse);
   rpc FollowNewsChannel(pylon.discord.v1.rest.FollowNewsChannelRequest)
-      returns(pylon.discord.v1.rest.FollowNewsChannelResponse);
-  rpc TriggerTypingIndicator(
-      pylon.discord.v1.rest.TriggerTypingIndicatorRequest)
-      returns(pylon.discord.v1.rest.TriggerTypingIndicatorResponse);
+      returns (pylon.discord.v1.rest.FollowNewsChannelResponse);
+  rpc TriggerTypingIndicator(pylon.discord.v1.rest.TriggerTypingIndicatorRequest)
+      returns (pylon.discord.v1.rest.TriggerTypingIndicatorResponse);
   rpc GetPinnedMessages(pylon.discord.v1.rest.GetPinnedMessagesRequest)
-      returns(pylon.discord.v1.rest.GetPinnedMessagesResponse);
-  rpc AddPinnedChannelMessage(
-      pylon.discord.v1.rest.AddPinnedChannelMessageRequest)
-      returns(pylon.discord.v1.rest.AddPinnedChannelMessageResponse);
-  rpc DeletePinnedChannelMessage(
-      pylon.discord.v1.rest.DeletePinnedChannelMessageRequest)
-      returns(pylon.discord.v1.rest.DeletePinnedChannelMessageResponse);
+      returns (pylon.discord.v1.rest.GetPinnedMessagesResponse);
+  rpc AddPinnedChannelMessage(pylon.discord.v1.rest.AddPinnedChannelMessageRequest)
+      returns (pylon.discord.v1.rest.AddPinnedChannelMessageResponse);
+  rpc DeletePinnedChannelMessage(pylon.discord.v1.rest.DeletePinnedChannelMessageRequest)
+      returns (pylon.discord.v1.rest.DeletePinnedChannelMessageResponse);
   rpc ListGuildEmojis(pylon.discord.v1.rest.ListGuildEmojisRequest)
-      returns(pylon.discord.v1.rest.ListGuildEmojisResponse);
+      returns (pylon.discord.v1.rest.ListGuildEmojisResponse);
   rpc GetGuildEmoji(pylon.discord.v1.rest.GetGuildEmojiRequest)
-      returns(pylon.discord.v1.rest.GetGuildEmojiResponse);
+      returns (pylon.discord.v1.rest.GetGuildEmojiResponse);
   rpc CreateGuildEmoji(pylon.discord.v1.rest.CreateGuildEmojiRequest)
-      returns(pylon.discord.v1.rest.CreateGuildEmojiResponse);
+      returns (pylon.discord.v1.rest.CreateGuildEmojiResponse);
   rpc ModifyGuildEmoji(pylon.discord.v1.rest.ModifyGuildEmojiRequest)
-      returns(pylon.discord.v1.rest.ModifyGuildEmojiResponse);
+      returns (pylon.discord.v1.rest.ModifyGuildEmojiResponse);
   rpc DeleteGuildEmoji(pylon.discord.v1.rest.DeleteGuildEmojiRequest)
-      returns(pylon.discord.v1.rest.DeleteGuildEmojiResponse);
+      returns (pylon.discord.v1.rest.DeleteGuildEmojiResponse);
   rpc GetCurrentUser(pylon.discord.v1.rest.GetCurrentUserRequest)
-      returns(pylon.discord.v1.rest.GetCurrentUserResponse);
+      returns (pylon.discord.v1.rest.GetCurrentUserResponse);
   rpc GetUser(pylon.discord.v1.rest.GetUserRequest)
-      returns(pylon.discord.v1.rest.GetUserResponse);
+      returns (pylon.discord.v1.rest.GetUserResponse);
   rpc ModifyCurrentUser(pylon.discord.v1.rest.ModifyCurrentUserRequest)
-      returns(pylon.discord.v1.rest.ModifyCurrentUserResponse);
+      returns (pylon.discord.v1.rest.ModifyCurrentUserResponse);
   rpc LeaveGuild(pylon.discord.v1.rest.LeaveGuildRequest)
-      returns(pylon.discord.v1.rest.LeaveGuildResponse);
+      returns (pylon.discord.v1.rest.LeaveGuildResponse);
   rpc CreateDm(pylon.discord.v1.rest.CreateDmRequest)
-      returns(pylon.discord.v1.rest.CreateDmResponse);
+      returns (pylon.discord.v1.rest.CreateDmResponse);
 }

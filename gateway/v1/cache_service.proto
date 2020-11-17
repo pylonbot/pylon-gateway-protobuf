@@ -3,49 +3,46 @@ syntax = "proto3";
 package pylon.gateway.v1.service;
 option java_package = "bot.pylon.proto.gateway.v1.service";
 option java_multiple_files = true;
-option go_package =
-    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/service";
+option go_package = "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/service";
 
 import "discord/v1/cache.proto";
 
 service GatewayCache {
   // Guilds
   rpc GetGuild(pylon.discord.v1.cache.GetGuildRequest)
-      returns(pylon.discord.v1.cache.GetGuildResponse);
+      returns (pylon.discord.v1.cache.GetGuildResponse);
 
   // Channels
   rpc ListGuildChannels(pylon.discord.v1.cache.ListGuildChannelsRequest)
-      returns(pylon.discord.v1.cache.ListGuildChannelsResponse);
+      returns (pylon.discord.v1.cache.ListGuildChannelsResponse);
   rpc GetGuildChannel(pylon.discord.v1.cache.GetGuildChannelRequest)
-      returns(pylon.discord.v1.cache.GetGuildChannelResponse);
+      returns (pylon.discord.v1.cache.GetGuildChannelResponse);
 
   // Guild Members
   rpc ListGuildMembers(pylon.discord.v1.cache.ListGuildMembersRequest)
-      returns(pylon.discord.v1.cache.ListGuildMembersResponse);
+      returns (pylon.discord.v1.cache.ListGuildMembersResponse);
   rpc GetGuildMember(pylon.discord.v1.cache.GetGuildMemberRequest)
-      returns(pylon.discord.v1.cache.GetGuildMemberResponse);
+      returns (pylon.discord.v1.cache.GetGuildMemberResponse);
 
   // Guild Member Properties
   rpc ListGuildRoles(pylon.discord.v1.cache.ListGuildRolesRequest)
-      returns(pylon.discord.v1.cache.ListGuildRolesResponse);
+      returns (pylon.discord.v1.cache.ListGuildRolesResponse);
   rpc GetGuildRole(pylon.discord.v1.cache.GetGuildRoleRequest)
-      returns(pylon.discord.v1.cache.GetGuildRoleResponse);
+      returns (pylon.discord.v1.cache.GetGuildRoleResponse);
 
   // Emojis
   rpc ListGuildEmojis(pylon.discord.v1.cache.ListGuildEmojisRequest)
-      returns(pylon.discord.v1.cache.ListGuildEmojisResponse);
+      returns (pylon.discord.v1.cache.ListGuildEmojisResponse);
   rpc GetGuildEmoji(pylon.discord.v1.cache.GetGuildEmojiRequest)
-      returns(pylon.discord.v1.cache.GetGuildEmojiResponse);
+      returns (pylon.discord.v1.cache.GetGuildEmojiResponse);
 
   // Users
   rpc GetUser(pylon.discord.v1.cache.GetUserRequest)
-      returns(pylon.discord.v1.cache.GetUserResponse);
+      returns (pylon.discord.v1.cache.GetUserResponse);
 
   // VoiceStates
-  rpc GetGuildMemberVoiceState(
-      pylon.discord.v1.cache.GetGuildMemberVoiceStateRequest)
-      returns(pylon.discord.v1.cache.GetGuildMemberVoiceStateResponse);
-  rpc ListGuildChannelVoiceStates(
-      pylon.discord.v1.cache.ListGuildChannelVoiceStatesRequest)
-      returns(pylon.discord.v1.cache.ListGuildChannelVoiceStatesResponse);
+  rpc GetGuildMemberVoiceState(pylon.discord.v1.cache.GetGuildMemberVoiceStateRequest)
+      returns (pylon.discord.v1.cache.GetGuildMemberVoiceStateResponse);
+  rpc ListGuildChannelVoiceStates(pylon.discord.v1.cache.ListGuildChannelVoiceStatesRequest)
+      returns (pylon.discord.v1.cache.ListGuildChannelVoiceStatesResponse);
 }

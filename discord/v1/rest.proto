@@ -3,8 +3,7 @@ syntax = "proto3";
 package pylon.discord.v1.rest;
 option java_package = "bot.pylon.proto.discord.v1.rest";
 option java_multiple_files = true;
-option go_package =
-    "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/rest";
+option go_package = "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/rest";
 
 import "discord/v1/model.proto";
 import "google/protobuf/empty.proto";
@@ -43,7 +42,9 @@ message ModifyGuildResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.GuildData guild = 1; }
+  message Data {
+    pylon.discord.v1.model.GuildData guild = 1;
+  }
 }
 
 // Create Guild Channel
@@ -56,8 +57,7 @@ message CreateGuildChannelRequest {
   google.protobuf.UInt32Value user_limit = 5;
   google.protobuf.UInt32Value rate_limit_per_user = 6;
   google.protobuf.UInt32Value position = 7;
-  repeated pylon.discord.v1.model.ChannelData
-      .ChannelPermissionOverwriteData permission_overwrites = 8;
+  repeated pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData permission_overwrites = 8;
   pylon.discord.v1.model.SnowflakeValue parent_id = 9;
   google.protobuf.BoolValue nsfw = 10;
   google.protobuf.StringValue audit_log_reason = 11;
@@ -69,7 +69,9 @@ message CreateGuildChannelResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+  message Data {
+    pylon.discord.v1.model.ChannelData channel = 1;
+  }
 }
 
 // Modify Guild Channel Positions
@@ -107,7 +109,9 @@ message AddGuildMemberResponse {
     Data data = 2;
   }
 
-  message Data { bool added = 1; }
+  message Data {
+    bool added = 1;
+  }
 }
 
 // Modify Guild Member
@@ -131,7 +135,9 @@ message ModifyGuildMemberResponse {
 
 // Modify Current User Nick
 
-message ModifyCurrentUserNickRequest { google.protobuf.StringValue nick = 1; }
+message ModifyCurrentUserNickRequest {
+  google.protobuf.StringValue nick = 1;
+}
 
 message ModifyCurrentUserNickResponse {
   oneof response {
@@ -186,7 +192,9 @@ message RemoveGuildMemberResponse {
 
 // Get Guild Bans
 
-message GetGuildBansRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+message GetGuildBansRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
 
 message GetGuildBansResponse {
   oneof response {
@@ -194,12 +202,16 @@ message GetGuildBansResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.GuildBanData bans = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.GuildBanData bans = 1;
+  }
 }
 
 // Get Guild Ban
 
-message GetGuildBanRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+message GetGuildBanRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
 
 message GetGuildBanResponse {
   oneof response {
@@ -207,7 +219,9 @@ message GetGuildBanResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.GuildBanData ban = 1; }
+  message Data {
+    pylon.discord.v1.model.GuildBanData ban = 1;
+  }
 }
 
 // Create Guild Ban
@@ -255,7 +269,9 @@ message CreateGuildRoleResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.RoleData role = 1; }
+  message Data {
+    pylon.discord.v1.model.RoleData role = 1;
+  }
 }
 
 // Modify Guild Role Positions
@@ -275,7 +291,9 @@ message ModifyGuildRolePositionsResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.RoleData roles = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.RoleData roles = 1;
+  }
 }
 
 // Modify Guild Role
@@ -295,12 +313,16 @@ message ModifyGuildRoleResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.RoleData role = 1; }
+  message Data {
+    pylon.discord.v1.model.RoleData role = 1;
+  }
 }
 
 // Delete Guild Role
 
-message DeleteGuildRoleRequest { fixed64 role_id = 1 [jstype = JS_STRING]; }
+message DeleteGuildRoleRequest {
+  fixed64 role_id = 1 [jstype = JS_STRING];
+}
 
 message DeleteGuildRoleResponse {
   oneof response {
@@ -348,7 +370,9 @@ message GetGuildVoiceRegionsResponse {
     Data data = 2;
   }
 
-  message Data { repeated string regions = 1; }
+  message Data {
+    repeated string regions = 1;
+  }
 }
 
 // Get Guild Invites
@@ -361,7 +385,9 @@ message GetGuildInvitesResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.InviteData invites = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.InviteData invites = 1;
+  }
 }
 
 // Modify Channel
@@ -380,8 +406,7 @@ message ModifyChannelRequest {
   pylon.discord.v1.model.SnowflakeValue parent_id = 11;
 
   message ChannelPermissionOverwritesValue {
-    repeated pylon.discord.v1.model.ChannelData
-        .ChannelPermissionOverwriteData values = 1;
+    repeated pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData values = 1;
   }
 }
 
@@ -391,12 +416,16 @@ message ModifyChannelResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+  message Data {
+    pylon.discord.v1.model.ChannelData channel = 1;
+  }
 }
 
 // Delete Channel
 
-message DeleteChannelRequest { fixed64 channel_id = 1 [jstype = JS_STRING]; }
+message DeleteChannelRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
 
 message DeleteChannelResponse {
   oneof response {
@@ -440,7 +469,9 @@ message CreateMessageResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.MessageData message = 1; }
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
 }
 
 // Crosspost Message
@@ -456,7 +487,9 @@ message CrosspostMessageResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.MessageData message = 1; }
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
 }
 
 // Create Reaction
@@ -550,7 +583,9 @@ message EditMessageResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.MessageData message = 1; }
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
 }
 
 // Delete Message
@@ -588,8 +623,7 @@ message EditChannelPermissionsRequest {
   fixed64 overwrite_id = 2 [jstype = JS_STRING];
   uint64 allow = 3 [jstype = JS_STRING];
   uint64 deny = 4 [jstype = JS_STRING];
-  pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData
-      .ChannelPermissionOverwriteType type = 5;
+  pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData.ChannelPermissionOverwriteType type = 5;
 }
 
 message EditChannelPermissionsResponse {
@@ -611,7 +645,9 @@ message GetChannelInvitesResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.InviteData invites = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.InviteData invites = 1;
+  }
 }
 
 // Create Channel Invite
@@ -623,7 +659,7 @@ message CreateChannelInviteRequest {
   google.protobuf.BoolValue temporary = 4;
   google.protobuf.BoolValue unique = 5;
   pylon.discord.v1.model.SnowflakeValue target_user = 6;
-  google.protobuf.UInt32Value target_user_type = 7; // todo: enum
+  google.protobuf.UInt32Value target_user_type = 7;  // todo: enum
 }
 
 message CreateChannelInviteResponse {
@@ -632,7 +668,9 @@ message CreateChannelInviteResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.InviteData invite = 1; }
+  message Data {
+    pylon.discord.v1.model.InviteData invite = 1;
+  }
 }
 
 // Delete Channel Permission
@@ -693,7 +731,9 @@ message GetPinnedMessagesResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.MessageData messages = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.MessageData messages = 1;
+  }
 }
 
 // Add Pinned Channel Message
@@ -734,12 +774,16 @@ message ListGuildEmojisResponse {
     Data data = 2;
   }
 
-  message Data { repeated pylon.discord.v1.model.EmojiData emojis = 1; }
+  message Data {
+    repeated pylon.discord.v1.model.EmojiData emojis = 1;
+  }
 }
 
 // Get Guild Emoji
 
-message GetGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+message GetGuildEmojiRequest {
+  fixed64 emoji_id = 1 [jstype = JS_STRING];
+}
 
 message GetGuildEmojiResponse {
   oneof response {
@@ -747,7 +791,9 @@ message GetGuildEmojiResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+  message Data {
+    pylon.discord.v1.model.EmojiData emoji = 1;
+  }
 }
 
 // Create Guild Emoji
@@ -764,7 +810,9 @@ message CreateGuildEmojiResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+  message Data {
+    pylon.discord.v1.model.EmojiData emoji = 1;
+  }
 }
 
 // Modify Guild Emoji
@@ -781,12 +829,16 @@ message ModifyGuildEmojiResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.EmojiData emoji = 1; }
+  message Data {
+    pylon.discord.v1.model.EmojiData emoji = 1;
+  }
 }
 
 // Delete Guild Emoji
 
-message DeleteGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+message DeleteGuildEmojiRequest {
+  fixed64 emoji_id = 1 [jstype = JS_STRING];
+}
 
 message DeleteGuildEmojiResponse {
   oneof response {
@@ -805,12 +857,16 @@ message GetCurrentUserResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.UserData user = 1; }
+  message Data {
+    pylon.discord.v1.model.UserData user = 1;
+  }
 }
 
 // Get User
 
-message GetUserRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+message GetUserRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
 
 message GetUserResponse {
   oneof response {
@@ -818,7 +874,9 @@ message GetUserResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.UserData user = 1; }
+  message Data {
+    pylon.discord.v1.model.UserData user = 1;
+  }
 }
 
 // Modify Current User
@@ -834,7 +892,9 @@ message ModifyCurrentUserResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.UserData user = 1; }
+  message Data {
+    pylon.discord.v1.model.UserData user = 1;
+  }
 }
 
 // Leave Guild
@@ -850,7 +910,9 @@ message LeaveGuildResponse {
 
 // Create DM
 
-message CreateDmRequest { fixed64 recipient_id = 1 [jstype = JS_STRING]; }
+message CreateDmRequest {
+  fixed64 recipient_id = 1 [jstype = JS_STRING];
+}
 
 message CreateDmResponse {
   oneof response {
@@ -858,5 +920,7 @@ message CreateDmResponse {
     Data data = 2;
   }
 
-  message Data { pylon.discord.v1.model.ChannelData channel = 1; }
+  message Data {
+    pylon.discord.v1.model.ChannelData channel = 1;
+  }
 }

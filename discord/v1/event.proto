@@ -3,8 +3,7 @@ syntax = "proto3";
 package pylon.discord.v1.event;
 option java_package = "bot.pylon.proto.discord.v1.event";
 option java_multiple_files = true;
-option go_package =
-    "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/event";
+option go_package = "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/event";
 
 import "discord/v1/model.proto";
 import "google/protobuf/timestamp.proto";
@@ -118,25 +117,64 @@ message MessageUpdateEvent {
     pylon.discord.v1.model.SnowflakeListValue mention_roles = 6;
     google.protobuf.BoolValue tts = 7;
     google.protobuf.BoolValue mention_everyone = 8;
-    repeated pylon.discord.v1.model.MessageData
-        .MessageAttachmentData attachments = 9;
-    repeated pylon.discord.v1.model.MessageData.MessageEmbedData embeds = 10;
-    repeated pylon.discord.v1.model.MessageData.MessageMentionData mentions =
-        11;
-    repeated pylon.discord.v1.model.MessageData.MessageReactionData reactions =
-        12;
+    MessageAttachmentListValue attachments = 9;
+    MessageEmbedListValue embeds = 10;
+    MessageMentionListValue mentions = 11;
+    MessageReactionListValue reactions = 12;
     google.protobuf.BoolValue pinned = 13;
-    pylon.discord.v1.model.MessageData.MessageType type = 14;
-    repeated pylon.discord.v1.model.MessageData
-        .MessageMentionChannelData mention_channels = 15;
+    MessageTypeValue type = 14;
+    MessageMentionChannelListValue mention_channels = 15;
     google.protobuf.UInt32Value flags = 16;
-    pylon.discord.v1.model.MessageData.MessageActivityData activity = 17;
-    pylon.discord.v1.model.MessageData.MessageApplicationData application = 18;
-    pylon.discord.v1.model.MessageData.MessageReferenceData message_reference =
-        19;
-    pylon.discord.v1.model.UserData author = 20;
-    pylon.discord.v1.model.MemberData member = 21;
+    MessageActivityValue activity = 17;
+    MessageApplicationValue application = 18;
+    MessageReferenceValue message_reference = 19;
+    MessageAuthorValue author = 20;
+    MessageMemberValue member = 21;
     pylon.discord.v1.model.SnowflakeValue webhook_id = 22;
+
+    message MessageAttachmentListValue {
+      repeated pylon.discord.v1.model.MessageData.MessageAttachmentData values = 1;
+    }
+
+    message MessageEmbedListValue {
+      repeated pylon.discord.v1.model.MessageData.MessageEmbedData values = 1;
+    }
+
+    message MessageMentionListValue {
+      repeated pylon.discord.v1.model.MessageData.MessageMentionData values = 1;
+    }
+
+    message MessageReactionListValue {
+      repeated pylon.discord.v1.model.MessageData.MessageReactionData values = 1;
+    }
+
+    message MessageTypeValue {
+      pylon.discord.v1.model.MessageData.MessageType value = 1;
+    }
+
+    message MessageMentionChannelListValue {
+      repeated pylon.discord.v1.model.MessageData.MessageMentionChannelData values = 1;
+    }
+
+    message MessageActivityValue {
+      pylon.discord.v1.model.MessageData.MessageActivityData value = 1;
+    }
+
+    message MessageApplicationValue {
+      pylon.discord.v1.model.MessageData.MessageApplicationData value = 1;
+    }
+
+    message MessageReferenceValue {
+      pylon.discord.v1.model.MessageData.MessageReferenceData value = 1;
+    }
+
+    message MessageAuthorValue {
+      pylon.discord.v1.model.UserData value = 1;
+    }
+
+    message MessageMemberValue {
+      pylon.discord.v1.model.MemberData value = 1;
+    }
   }
 }
 
@@ -293,42 +331,54 @@ message GuildIntegrationsUpdateEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message WebhooksUpdateEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message IntegrationCreateEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message IntegrationUpdateEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message IntegrationDeleteEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { fixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message InteractionCreateEvent {
   EventScope scope = 1;
   PayloadData payload = 2;
 
-  message PayloadData { sfixed64 guild_id = 1 [jstype = JS_STRING]; }
+  message PayloadData {
+    sfixed64 guild_id = 1 [jstype = JS_STRING];
+  }
 }
 
 message EventResponse {}

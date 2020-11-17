@@ -13,7 +13,9 @@ import "discord/v1/model.proto";
 
 message GetGuildRequest {}
 
-message GetGuildResponse { pylon.discord.v1.model.GuildData guild = 1; }
+message GetGuildResponse {
+  pylon.discord.v1.model.GuildData guild = 1;
+}
 
 // ListGuildChannels
 
@@ -25,7 +27,9 @@ message ListGuildChannelsResponse {
 
 // GetGuildChannel
 
-message GetGuildChannelRequest { fixed64 channel_id = 1 [jstype = JS_STRING]; }
+message GetGuildChannelRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+}
 
 message GetGuildChannelResponse {
   pylon.discord.v1.model.ChannelData channel = 1;
@@ -44,9 +48,13 @@ message ListGuildMembersResponse {
 
 // GetGuildMember
 
-message GetGuildMemberRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+message GetGuildMemberRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
 
-message GetGuildMemberResponse { pylon.discord.v1.model.MemberData member = 1; }
+message GetGuildMemberResponse {
+  pylon.discord.v1.model.MemberData member = 1;
+}
 
 // ListGuildRoles
 
@@ -58,9 +66,13 @@ message ListGuildRolesResponse {
 
 // GetGuildRole
 
-message GetGuildRoleRequest { fixed64 role_id = 1 [jstype = JS_STRING]; }
+message GetGuildRoleRequest {
+  fixed64 role_id = 1 [jstype = JS_STRING];
+}
 
-message GetGuildRoleResponse { pylon.discord.v1.model.RoleData role = 1; }
+message GetGuildRoleResponse {
+  pylon.discord.v1.model.RoleData role = 1;
+}
 
 // ListGuildEmojis
 
@@ -72,15 +84,23 @@ message ListGuildEmojisResponse {
 
 // GetGuildEmoji
 
-message GetGuildEmojiRequest { fixed64 emoji_id = 1 [jstype = JS_STRING]; }
+message GetGuildEmojiRequest {
+  fixed64 emoji_id = 1 [jstype = JS_STRING];
+}
 
-message GetGuildEmojiResponse { pylon.discord.v1.model.EmojiData emoji = 1; }
+message GetGuildEmojiResponse {
+  pylon.discord.v1.model.EmojiData emoji = 1;
+}
 
 // GetUser
 
-message GetUserRequest { fixed64 user_id = 1 [jstype = JS_STRING]; }
+message GetUserRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
 
-message GetUserResponse { pylon.discord.v1.model.UserData user = 1; }
+message GetUserResponse {
+  pylon.discord.v1.model.UserData user = 1;
+}
 
 // GetGuildMemberVoiceState
 

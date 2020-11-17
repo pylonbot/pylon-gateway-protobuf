@@ -9,10 +9,16 @@ option go_package =
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
-message SnowflakeValue { fixed64 value = 1 [jstype = JS_STRING]; }
-message SnowflakeListValue { repeated fixed64 values = 1 [jstype = JS_STRING]; }
+message SnowflakeValue {
+  fixed64 value = 1 [jstype = JS_STRING];
+}
+message SnowflakeListValue {
+  repeated fixed64 values = 1 [jstype = JS_STRING];
+}
 
-message PermissionsValue { uint64 value = 1 [jstype = JS_STRING]; }
+message PermissionsValue {
+  uint64 value = 1 [jstype = JS_STRING];
+}
 
 message GuildData {
   fixed64 id = 1 [jstype = JS_STRING];
@@ -57,7 +63,11 @@ message ChannelData {
   repeated ChannelPermissionOverwriteData permission_overwrites = 12;
 
   enum ChannelType {
-    UNKNOWN = 0; GUILD_TEXT = 1; DM = 2; GUILD_VOICE = 3; GROUP_DM = 4;
+    UNKNOWN = 0;
+    GUILD_TEXT = 1;
+    DM = 2;
+    GUILD_VOICE = 3;
+    GROUP_DM = 4;
     GUILD_CATEGORY = 5;
     GUILD_NEWS = 6;
     GUILD_STORE = 7;
@@ -69,7 +79,11 @@ message ChannelData {
     uint64 allow = 3 [jstype = JS_STRING];
     uint64 deny = 4 [jstype = JS_STRING];
 
-    enum ChannelPermissionOverwriteType { UNKNOWN = 0; ROLE = 1; MEMBER = 2; }
+    enum ChannelPermissionOverwriteType {
+      UNKNOWN = 0;
+      ROLE = 1;
+      MEMBER = 2;
+    }
   }
 }
 
@@ -156,7 +170,11 @@ message MessageData {
   SnowflakeValue webhook_id = 23;
 
   enum MessageType {
-    UNKNOWN = 0; DEFAULT = 1; RECIPIENT_ADD = 2; RECIPIENT_REMOVE = 3; CALL = 4;
+    UNKNOWN = 0;
+    DEFAULT = 1;
+    RECIPIENT_ADD = 2;
+    RECIPIENT_REMOVE = 3;
+    CALL = 4;
     CHANNEL_NAME_CHANGE = 5;
     CHANNEL_ICON_CHANGE = 6;
     CHANNEL_PINNED_MESSAGE = 7;
@@ -227,7 +245,12 @@ message MessageData {
 
   message MessageEmbedData {
     enum MessageEmbedType {
-      UNKNOWN = 0; RICH = 1; IMAGE = 2; VIDEO = 3; GIFV = 4; ARTICLE = 5;
+      UNKNOWN = 0;
+      RICH = 1;
+      IMAGE = 2;
+      VIDEO = 3;
+      GIFV = 4;
+      ARTICLE = 5;
       LINK = 6;
     }
 
@@ -363,7 +386,10 @@ message WebhookData {
   string avatar = 6;
   string token = 7;
 
-  enum WebhookType { INCOMING = 0; CHANNEL_FOLLOWER = 1; }
+  enum WebhookType {
+    INCOMING = 0;
+    CHANNEL_FOLLOWER = 1;
+  }
 }
 
 message InviteData {
@@ -384,7 +410,12 @@ message GuildBanData {
 }
 
 message ImageData {
-  enum ImageDataType { UNKNOWN = 0; JPEG = 1; PNG = 2; GIF = 3; }
+  enum ImageDataType {
+    UNKNOWN = 0;
+    JPEG = 1;
+    PNG = 2;
+    GIF = 3;
+  }
 
   ImageDataType type = 1;
   oneof data {
