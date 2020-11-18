@@ -25,14 +25,14 @@ message ModifyGuildRequest {
   google.protobuf.UInt32Value explicit_content_filter = 5;
   pylon.discord.v1.model.SnowflakeValue afk_channel_id = 6;
   google.protobuf.UInt32Value afk_timeout = 7;
-  google.protobuf.StringValue icon = 8;
+  google.protobuf.BytesValue icon = 8;
   pylon.discord.v1.model.SnowflakeValue owner_id = 9;
-  google.protobuf.StringValue splash = 10;
-  google.protobuf.StringValue banner = 11;
+  google.protobuf.BytesValue splash = 10;
+  google.protobuf.BytesValue banner = 11;
   pylon.discord.v1.model.SnowflakeValue system_channel_id = 12;
   pylon.discord.v1.model.SnowflakeValue rules_channel_id = 13;
   pylon.discord.v1.model.SnowflakeValue public_updates_channel_id = 14;
-  pylon.discord.v1.model.SnowflakeValue preferred_locale = 15;
+  google.protobuf.StringValue preferred_locale = 15;
 
   google.protobuf.StringValue audit_log_reason = 100;
 }
@@ -834,7 +834,7 @@ message GetGuildEmojiResponse {
 
 message CreateGuildEmojiRequest {
   string name = 1;
-  pylon.discord.v1.model.ImageData image = 2;
+  google.protobuf.BytesValue image = 2;
   pylon.discord.v1.model.SnowflakeListValue roles = 3;
 
   google.protobuf.StringValue audit_log_reason = 100;
@@ -923,7 +923,7 @@ message GetUserResponse {
 
 message ModifyCurrentUserRequest {
   google.protobuf.StringValue username = 1;
-  pylon.discord.v1.model.ImageData avatar = 2;
+  google.protobuf.BytesValue avatar = 2;
 }
 
 message ModifyCurrentUserResponse {

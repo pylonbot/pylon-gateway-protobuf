@@ -430,18 +430,3 @@ message GuildBanData {
   string reason = 1;
   UserData user = 2;
 }
-
-message ImageData {
-  enum ImageDataType {
-    UNKNOWN = 0;
-    JPEG = 1;
-    PNG = 2;
-    GIF = 3;
-  }
-
-  ImageDataType type = 1;
-  oneof data {
-    string base64 = 2;
-    bytes bytes = 3;
-  }
-}
