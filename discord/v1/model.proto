@@ -393,15 +393,37 @@ message WebhookData {
 }
 
 message InviteData {
-  fixed64 guild_id = 1 [jstype = JS_STRING];
-  fixed64 channel_id = 2 [jstype = JS_STRING];
-  string code = 3;
-  google.protobuf.Timestamp created_at = 4;
-  UserData inviter = 5;
-  uint64 max_age = 6;
-  uint64 max_uses = 7;
-  bool temporary = 8;
-  uint64 uses = 9;
+  string code = 1;
+  InviteGuildData guild = 2;
+  InviteChannelData channel = 3;
+  UserData inviter = 4;
+  UserData target_user = 5;
+  InviteTargetUserType target_user_type = 6;
+  google.protobuf.UInt32Value approximate_presence_count = 7;
+  google.protobuf.UInt32Value approximate_member_count = 8;
+
+  message InviteGuildData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string name = 2;
+    google.protobuf.StringValue splash = 3;
+    google.protobuf.StringValue banner = 4;
+    google.protobuf.StringValue description = 5;
+    google.protobuf.StringValue icon = 6;
+    repeated string features = 7;
+    uint32 verification_level = 8;
+    google.protobuf.StringValue vanity_url_code = 9;
+  }
+
+  message InviteChannelData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    string name = 2;
+    ChannelData.ChannelType type = 3;
+  }
+
+  enum InviteTargetUserType {
+    UNKNOWN = 0;
+    STREAM = 1;
+  }
 }
 
 message GuildBanData {

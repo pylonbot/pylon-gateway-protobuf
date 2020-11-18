@@ -685,7 +685,7 @@ message CreateChannelInviteRequest {
   google.protobuf.BoolValue temporary = 4;
   google.protobuf.BoolValue unique = 5;
   pylon.discord.v1.model.SnowflakeValue target_user = 6;
-  google.protobuf.UInt32Value target_user_type = 7;  // todo: enum
+  pylon.discord.v1.model.InviteData.InviteTargetUserType target_user_type = 7;
 
   google.protobuf.StringValue audit_log_reason = 100;
 }

@@ -282,7 +282,21 @@ message VoiceServerUpdateEvent {
 
 message InviteCreateEvent {
   EventScope scope = 1;
-  pylon.discord.v1.model.InviteData payload = 2;
+  PayloadData payload = 2;
+
+  message PayloadData {
+    fixed64 channel_id = 1 [jstype = JS_STRING];
+    string code = 2;
+    google.protobuf.Timestamp created_at = 3;
+    pylon.discord.v1.model.SnowflakeValue guild_id = 4;
+    pylon.discord.v1.model.UserData inviter = 5;
+    uint64 max_age = 6;
+    uint64 max_uses = 7;
+    pylon.discord.v1.model.UserData target_user = 8;
+    pylon.discord.v1.model.InviteData.InviteTargetUserType target_user_type = 9;
+    bool temporary = 10;
+    uint64 uses = 11;
+  }
 }
 
 message InviteDeleteEvent {
