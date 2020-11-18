@@ -1,86 +1,120 @@
 
 REST METHODS:
 
-☐ Create Guild
-☐ Get Guild
-☐ Get Guild Preview
-✔ Modify Guild @done(20-11-09 23:19)
-☐ Delete Guild
-☐ Get Guild Channels
-✔ Create Guild Channel @done(20-11-09 23:19)
-✔ Modify Guild Channel Positions @done(20-11-09 23:19)
-☐ Get Guild Member
-☐ List Guild Members
-✔ Add Guild Member @done(20-11-10 01:05)
-✔ Modify Guild Member @done(20-11-09 23:19)
-✔ Modify Current User Nick @done(20-11-09 23:19)
-✔ Add Guild Member Role @done(20-11-09 23:19)
-✔ Remove Guild Member Role @done(20-11-09 23:19)
-✔ Remove Guild Member @done(20-11-09 23:19)
-✔ Get Guild Bans @done(20-11-09 23:19)
-✔ Get Guild Ban @done(20-11-09 23:19)
-✔ Create Guild Ban @done(20-11-09 23:19)
-✔ Remove Guild Ban @done(20-11-09 23:19)
-☐ Get Guild Roles
-✔ Create Guild Role @done(20-11-09 23:30)
-✔ Modify Guild Role Positions @done(20-11-09 23:30)
-✔ Modify Guild Role @done(20-11-09 23:30)
-✔ Delete Guild Role @done(20-11-09 23:36)
-✔ Get Guild Prune Count @done(20-11-09 23:44)
-✔ Begin Guild Prune @done(20-11-09 23:44)
-✔ Get Guild Voice Regions @done(20-11-09 23:44)
-✔ Get Guild Invites @done(20-11-09 23:45)
-☐ Get Guild Integrations
-☐ Create Guild Integration
-☐ Modify Guild Integration
-☐ Delete Guild Integration
-☐ Sync Guild Integration
-☐ Get Guild Widget Settings
-☐ Modify Guild Widget
-☐ Get Guild Widget
-☐ Get Guild Vanity URL
-☐ Get Guild Widget Image
+    Guild:
+    ☐ Create Guild
+    ☐ Get Guild
+    ☐ Get Guild Preview
+    ✔ Modify Guild @done(20-11-09 23:19)
+    ☐ Delete Guild
+    ☐ Get Guild Channels
+    ✔ Create Guild Channel @done(20-11-09 23:19)
+    ✔ Modify Guild Channel Positions @done(20-11-09 23:19)
+    ☐ Get Guild Member
+    ☐ List Guild Members
+    ✔ Add Guild Member @done(20-11-10 01:05)
+    ✔ Modify Guild Member @done(20-11-09 23:19)
+    ✔ Modify Current User Nick @done(20-11-09 23:19)
+    ✔ Add Guild Member Role @done(20-11-09 23:19)
+    ✔ Remove Guild Member Role @done(20-11-09 23:19)
+    ✔ Remove Guild Member @done(20-11-09 23:19)
+    ✔ Get Guild Bans @done(20-11-09 23:19)
+    ✔ Get Guild Ban @done(20-11-09 23:19)
+    ✔ Create Guild Ban @done(20-11-09 23:19)
+    ✔ Remove Guild Ban @done(20-11-09 23:19)
+    ☐ Get Guild Roles
+    ✔ Create Guild Role @done(20-11-09 23:30)
+    ✔ Modify Guild Role Positions @done(20-11-09 23:30)
+    ✔ Modify Guild Role @done(20-11-09 23:30)
+    ✔ Delete Guild Role @done(20-11-09 23:36)
+    ✔ Get Guild Prune Count @done(20-11-09 23:44)
+    ✔ Begin Guild Prune @done(20-11-09 23:44)
+    ✔ Get Guild Voice Regions @done(20-11-09 23:44)
+    ✔ Get Guild Invites @done(20-11-09 23:45)
+    ☐ Get Guild Integrations
+    ☐ Create Guild Integration
+    ☐ Modify Guild Integration
+    ☐ Delete Guild Integration
+    ☐ Sync Guild Integration
+    ☐ Get Guild Widget Settings
+    ☐ Modify Guild Widget
+    ☐ Get Guild Widget
+    ☐ Get Guild Vanity URL
+    ☐ Get Guild Widget Image
 
-☐ Get Channel
-✔ Modify Channel @done(20-11-10 23:21)
-✔ Delete/Close Channel @done(20-11-10 23:21)
-☐ Get Channel Messages
-☐ Get Channel Message
-✔ Create Message @done(20-11-11 07:16)
-✔ Crosspost Message @done(20-11-11 07:17)
-✔ Create Reaction @done(20-11-11 07:17)
-✔ Delete Own Reaction @done(20-11-11 07:19)
-✔ Delete User Reaction @done(20-11-11 07:19)
-☐ Get Reactions
-✔ Delete All Reactions @done(20-11-11 07:20)
-✔ Delete All Reactions for Emoji @done(20-11-11 07:24)
-✔ Edit Message @done(20-11-11 07:35)
-✔ Delete Message @done(20-11-11 07:35)
-✔ Bulk Delete Messages @done(20-11-11 07:35)
-✔ Edit Channel Permissions @done(20-11-11 07:48)
-✔ Get Channel Invites @done(20-11-11 08:18)
-✔ Create Channel Invite @done(20-11-11 08:18)
-✔ Delete Channel Permission @done(20-11-11 08:18)
-✔ Follow News Channel @done(20-11-11 08:18)
-✔ Trigger Typing Indicator @done(20-11-11 08:36)
-✔ Get Pinned Messages @done(20-11-11 08:36)
-✔ Add Pinned Channel Message @done(20-11-11 08:36)
-✔ Delete Pinned Channel Message @done(20-11-11 08:36)
-☐ Group DM Add Recipient
-☐ Group DM Remove Recipient
+    Channel:
+    ☐ Get Channel
+    ✔ Modify Channel @done(20-11-10 23:21)
+    ✔ Delete/Close Channel @done(20-11-10 23:21)
+    ☐ Get Channel Messages
+    ☐ Get Channel Message
+    ✔ Create Message @done(20-11-11 07:16)
+    ✔ Crosspost Message @done(20-11-11 07:17)
+    ✔ Create Reaction @done(20-11-11 07:17)
+    ✔ Delete Own Reaction @done(20-11-11 07:19)
+    ✔ Delete User Reaction @done(20-11-11 07:19)
+    ☐ Get Reactions
+    ✔ Delete All Reactions @done(20-11-11 07:20)
+    ✔ Delete All Reactions for Emoji @done(20-11-11 07:24)
+    ✔ Edit Message @done(20-11-11 07:35)
+    ✔ Delete Message @done(20-11-11 07:35)
+    ✔ Bulk Delete Messages @done(20-11-11 07:35)
+    ✔ Edit Channel Permissions @done(20-11-11 07:48)
+    ✔ Get Channel Invites @done(20-11-11 08:18)
+    ✔ Create Channel Invite @done(20-11-11 08:18)
+    ✔ Delete Channel Permission @done(20-11-11 08:18)
+    ✔ Follow News Channel @done(20-11-11 08:18)
+    ✔ Trigger Typing Indicator @done(20-11-11 08:36)
+    ✔ Get Pinned Messages @done(20-11-11 08:36)
+    ✔ Add Pinned Channel Message @done(20-11-11 08:36)
+    ✔ Delete Pinned Channel Message @done(20-11-11 08:36)
+    ☐ Group DM Add Recipient
+    ☐ Group DM Remove Recipient
 
-✔ List Guild Emojis @done(20-11-11 20:28)
-✔ Get Guild Emoji @done(20-11-11 20:28)
-✔ Create Guild Emoji @done(20-11-11 20:28)
-✔ Modify Guild Emoji @done(20-11-11 20:31)
-✔ Delete Guild Emoji @done(20-11-11 20:31)
+    Emoji:
+    ✔ List Guild Emojis @done(20-11-11 20:28)
+    ✔ Get Guild Emoji @done(20-11-11 20:28)
+    ✔ Create Guild Emoji @done(20-11-11 20:28)
+    ✔ Modify Guild Emoji @done(20-11-11 20:31)
+    ✔ Delete Guild Emoji @done(20-11-11 20:31)
 
-✔ Get Current User @done(20-11-11 20:49)
-✔ Get User @done(20-11-11 20:49)
-✔ Modify Current User @done(20-11-11 20:49)
-☐ Get Current User Guilds
-✔ Leave Guild @done(20-11-11 20:49)
-☐ Get User DMs
-✔ Create DM @done(20-11-11 23:10)
-☐ Create Group DM
-☐ Get User Connections
+    User:
+    ✔ Get Current User @done(20-11-11 20:49)
+    ✔ Get User @done(20-11-11 20:49)
+    ✔ Modify Current User @done(20-11-11 20:49)
+    ☐ Get Current User Guilds
+    ✔ Leave Guild @done(20-11-11 20:49)
+    ☐ Get User DMs
+    ✔ Create DM @done(20-11-11 23:10)
+    ☐ Create Group DM
+    ☐ Get User Connections
+
+    Invite:
+    ☐ Get Invite
+    ☐ Delete Invite (w/ AUDIT LOG REASON)
+
+    Voice:
+    ☐ List Voice Regions
+
+    Webhook:
+    ☐ Create Webhook
+    ☐ Get Channel Webhooks
+    ☐ Get Guild Webhooks
+    ☐ Get Webhook
+    ☐ Get Webhook with Token
+    ☐ Modify Webhook
+    ☐ Modify Webhook with Token
+    ☐ Delete Webhook
+    ☐ Delete Webhook with Token
+    ☐ Execute Webhook
+    ☐ Execute Slack-Compatible Webhook
+    ☐ Execute GitHub-Compatible Webhook
+
+    Template:
+    ☐ Get Template
+    ☐ Create Guild from Template
+    ☐ Get Guild Templates
+    ☐ Create Guild Template
+    ☐ Sync Guild Template
+    ☐ Modify Guild Template
+    ☐ Delete Guild Template

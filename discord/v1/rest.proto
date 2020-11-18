@@ -33,7 +33,8 @@ message ModifyGuildRequest {
   pylon.discord.v1.model.SnowflakeValue rules_channel_id = 13;
   pylon.discord.v1.model.SnowflakeValue public_updates_channel_id = 14;
   pylon.discord.v1.model.SnowflakeValue preferred_locale = 15;
-  google.protobuf.StringValue audit_log_reason = 16;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message ModifyGuildResponse {
@@ -60,7 +61,8 @@ message CreateGuildChannelRequest {
   repeated pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData permission_overwrites = 8;
   pylon.discord.v1.model.SnowflakeValue parent_id = 9;
   google.protobuf.BoolValue nsfw = 10;
-  google.protobuf.StringValue audit_log_reason = 11;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message CreateGuildChannelResponse {
@@ -123,7 +125,8 @@ message ModifyGuildMemberRequest {
   google.protobuf.BoolValue mute = 4;
   google.protobuf.BoolValue deaf = 5;
   pylon.discord.v1.model.SnowflakeValue channel_id = 6;
-  google.protobuf.StringValue audit_log_reason = 7;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message ModifyGuildMemberResponse {
@@ -151,7 +154,8 @@ message ModifyCurrentUserNickResponse {
 message AddGuildMemberRoleRequest {
   fixed64 user_id = 1 [jstype = JS_STRING];
   fixed64 role_id = 2 [jstype = JS_STRING];
-  google.protobuf.StringValue audit_log_reason = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message AddGuildMemberRoleResponse {
@@ -166,7 +170,8 @@ message AddGuildMemberRoleResponse {
 message RemoveGuildMemberRoleRequest {
   fixed64 user_id = 1 [jstype = JS_STRING];
   fixed64 role_id = 2 [jstype = JS_STRING];
-  google.protobuf.StringValue audit_log_reason = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message RemoveGuildMemberRoleResponse {
@@ -180,7 +185,8 @@ message RemoveGuildMemberRoleResponse {
 
 message RemoveGuildMemberRequest {
   fixed64 user_id = 1 [jstype = JS_STRING];
-  google.protobuf.StringValue audit_log_reason = 2;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message RemoveGuildMemberResponse {
@@ -229,7 +235,8 @@ message GetGuildBanResponse {
 message CreateGuildBanRequest {
   fixed64 user_id = 1 [jstype = JS_STRING];
   google.protobuf.UInt32Value delete_message_days = 2;
-  google.protobuf.StringValue audit_log_reason = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message CreateGuildBanResponse {
@@ -243,7 +250,8 @@ message CreateGuildBanResponse {
 
 message RemoveGuildBanRequest {
   fixed64 user_id = 1 [jstype = JS_STRING];
-  google.protobuf.StringValue audit_log_reason = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message RemoveGuildBanResponse {
@@ -261,6 +269,8 @@ message CreateGuildRoleRequest {
   google.protobuf.UInt32Value color = 3;
   google.protobuf.BoolValue hoist = 4;
   google.protobuf.BoolValue mentionable = 5;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message CreateGuildRoleResponse {
@@ -305,6 +315,8 @@ message ModifyGuildRoleRequest {
   google.protobuf.UInt32Value color = 4;
   google.protobuf.BoolValue hoist = 5;
   google.protobuf.BoolValue mentionable = 6;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message ModifyGuildRoleResponse {
@@ -322,6 +334,8 @@ message ModifyGuildRoleResponse {
 
 message DeleteGuildRoleRequest {
   fixed64 role_id = 1 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeleteGuildRoleResponse {
@@ -351,6 +365,8 @@ message BeginGuildPruneRequest {
   google.protobuf.UInt32Value days = 1;
   pylon.discord.v1.model.SnowflakeListValue include_roles = 2;
   google.protobuf.BoolValue compute_prune_count = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message BeginGuildPruneResponse {
@@ -405,6 +421,8 @@ message ModifyChannelRequest {
   ChannelPermissionOverwritesValue permission_overwrites = 10;
   pylon.discord.v1.model.SnowflakeValue parent_id = 11;
 
+  google.protobuf.StringValue audit_log_reason = 100;
+
   message ChannelPermissionOverwritesValue {
     repeated pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData values = 1;
   }
@@ -425,6 +443,8 @@ message ModifyChannelResponse {
 
 message DeleteChannelRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeleteChannelResponse {
@@ -593,6 +613,8 @@ message EditMessageResponse {
 message DeleteMessageRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
   fixed64 message_id = 2 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeleteMessageResponse {
@@ -607,6 +629,8 @@ message DeleteMessageResponse {
 message BulkDeleteMessagesRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
   repeated fixed64 message_ids = 2 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message BulkDeleteMessagesResponse {
@@ -624,6 +648,8 @@ message EditChannelPermissionsRequest {
   uint64 allow = 3 [jstype = JS_STRING];
   uint64 deny = 4 [jstype = JS_STRING];
   pylon.discord.v1.model.ChannelData.ChannelPermissionOverwriteData.ChannelPermissionOverwriteType type = 5;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message EditChannelPermissionsResponse {
@@ -660,6 +686,8 @@ message CreateChannelInviteRequest {
   google.protobuf.BoolValue unique = 5;
   pylon.discord.v1.model.SnowflakeValue target_user = 6;
   google.protobuf.UInt32Value target_user_type = 7;  // todo: enum
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message CreateChannelInviteResponse {
@@ -678,6 +706,8 @@ message CreateChannelInviteResponse {
 message DeleteChannelPermissionRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
   fixed64 overwrite_id = 2 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeleteChannelPermissionResponse {
@@ -741,6 +771,8 @@ message GetPinnedMessagesResponse {
 message AddPinnedChannelMessageRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
   fixed64 message_id = 2 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message AddPinnedChannelMessageResponse {
@@ -755,6 +787,8 @@ message AddPinnedChannelMessageResponse {
 message DeletePinnedChannelMessageRequest {
   fixed64 channel_id = 1 [jstype = JS_STRING];
   fixed64 message_id = 2 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeletePinnedChannelMessageResponse {
@@ -802,6 +836,8 @@ message CreateGuildEmojiRequest {
   string name = 1;
   pylon.discord.v1.model.ImageData image = 2;
   pylon.discord.v1.model.SnowflakeListValue roles = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message CreateGuildEmojiResponse {
@@ -821,6 +857,8 @@ message ModifyGuildEmojiRequest {
   fixed64 emoji_id = 1 [jstype = JS_STRING];
   google.protobuf.StringValue name = 2;
   pylon.discord.v1.model.SnowflakeListValue roles = 3;
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message ModifyGuildEmojiResponse {
@@ -838,6 +876,8 @@ message ModifyGuildEmojiResponse {
 
 message DeleteGuildEmojiRequest {
   fixed64 emoji_id = 1 [jstype = JS_STRING];
+
+  google.protobuf.StringValue audit_log_reason = 100;
 }
 
 message DeleteGuildEmojiResponse {
