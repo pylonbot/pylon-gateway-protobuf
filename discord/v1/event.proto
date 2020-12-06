@@ -97,7 +97,7 @@ message GuildRoleDeleteEvent {
 
 message MessageCreateEvent {
   EventScope scope = 1;
-  pylon.discord.v1.model.MessageData message = 2;
+  pylon.discord.v1.model.MessageData message_data = 2;
 }
 
 message MessageUpdateEvent {
