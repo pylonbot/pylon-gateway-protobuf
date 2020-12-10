@@ -8,6 +8,11 @@ option go_package =
 
 import "discord/v1/event.proto";
 
+service GatewayDispatchStreaming {
+  rpc Event(stream pylon.discord.v1.event.EventEnvelope)
+      returns (stream pylon.discord.v1.event.EventEnvelopeAck);
+}
+
 service GatewayDispatch {
   rpc GuildCreate(pylon.discord.v1.event.GuildCreateEvent)
       returns (pylon.discord.v1.event.EventResponse);

@@ -9,6 +9,57 @@ import "discord/v1/model.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
+message EventEnvelope {
+  HeaderData header = 1;
+
+  oneof event_data {
+    GuildCreateEvent guild_create_event = 2;
+    GuildUpdateEvent guild_update_event = 3;
+    GuildDeleteEvent guild_delete_event = 4;
+    PresenceUpdateEvent presence_update_event = 5;
+    GuildMemberAddEvent guild_member_add_event = 6;
+    GuildMemberUpdateEvent guild_member_update_event = 7;
+    GuildMemberRemoveEvent guild_member_remove_event = 8;
+    ChannelCreateEvent channel_create_event = 9;
+    ChannelUpdateEvent channel_update_event = 10;
+    ChannelDeleteEvent channel_delete_event = 11;
+    ChannelPinsUpdateEvent channel_pins_update_event = 12;
+    GuildRoleCreateEvent guild_role_create_event = 13;
+    GuildRoleUpdateEvent guild_role_update_event = 14;
+    GuildRoleDeleteEvent guild_role_delete_event = 15;
+    MessageCreateEvent message_create_event = 16;
+    MessageUpdateEvent message_update_event = 17;
+    MessageDeleteEvent message_delete_event = 18;
+    MessageDeleteBulkEvent message_delete_bulk_event = 19;
+    MessageReactionAddEvent message_reaction_add_event = 20;
+    MessageReactionRemoveEvent message_reaction_remove_event = 21;
+    MessageReactionRemoveAllEvent message_reaction_remove_all_event = 22;
+    MessageReactionRemoveEmojiEvent message_reaction_remove_emoji_event = 23;
+    TypingStartEvent typing_start_event = 24;
+    VoiceStateUpdateEvent voice_state_update_event = 25;
+    VoiceServerUpdateEvent voice_server_update_event = 26;
+    InviteCreateEvent invite_create_event = 27;
+    InviteDeleteEvent invite_delete_event = 28;
+    GuildBanAddEvent guild_ban_add_event = 29;
+    GuildBanRemoveEvent guild_ban_remove_event = 30;
+    GuildEmojisUpdateEvent guild_emojis_update_event = 31;
+    GuildIntegrationsUpdateEvent guild_integrations_update_event = 32;
+    WebhooksUpdateEvent webhooks_update_event = 33;
+    IntegrationCreateEvent integration_create_event = 34;
+    IntegrationUpdateEvent integration_update_event = 35;
+    IntegrationDeleteEvent integration_delete_event = 36;
+    InteractionCreateEvent interaction_create_event = 37;
+  }
+
+  message HeaderData {
+    uint64 seq = 1;
+  }
+}
+
+message EventEnvelopeAck {
+  uint64 seq = 1;
+}
+
 message EventScope {
   fixed64 bot_id = 1 [jstype = JS_STRING];
   fixed64 guild_id = 2 [jstype = JS_STRING];
