@@ -10,9 +10,45 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 message RestError {
-  uint32 status = 1;
-  uint32 code = 2;
-  string message = 3;
+  oneof error_type {
+    UnknownError unknown_error = 1;
+    ValidationError validation_error = 2;
+    ResourceNotFound resource_not_found = 3;
+    AccessDenied access_denied = 4;
+    RateLimited rate_limited = 5;
+  }
+
+  message UnknownError {
+    uint32 http_status = 1;
+    uint32 code = 2;
+    string message = 3;
+  }
+
+  message ValidationError {
+    string message = 1;
+    repeated Field fields = 2;
+
+    message Field {
+      string path = 1;
+      string code = 2;
+      string message = 3;
+    }
+  }
+
+  message ResourceNotFound {
+    uint32 code = 1;
+    string message = 2;
+  }
+
+  message AccessDenied {
+    uint32 code = 1;
+    string message = 2;
+  }
+
+  message RateLimited {
+    bool global = 1;
+    uint32 retry_at = 2;
+  }
 }
 
 // Modify Guild
