@@ -55,6 +55,10 @@ service GatewayRest {
       returns (pylon.discord.v1.rest.ModifyChannelResponse);
   rpc DeleteChannel(pylon.discord.v1.rest.DeleteChannelRequest)
       returns (pylon.discord.v1.rest.DeleteChannelResponse);
+  rpc GetChannelMessages(pylon.discord.v1.rest.GetChannelMessagesRequest)
+      returns (pylon.discord.v1.rest.GetChannelMessagesResponse);
+  rpc GetChannelMessage(pylon.discord.v1.rest.GetChannelMessageRequest)
+      returns (pylon.discord.v1.rest.GetChannelMessageResponse);
   rpc CreateMessage(pylon.discord.v1.rest.CreateMessageRequest)
       returns (pylon.discord.v1.rest.CreateMessageResponse);
   rpc CrosspostMessage(pylon.discord.v1.rest.CrosspostMessageRequest)
