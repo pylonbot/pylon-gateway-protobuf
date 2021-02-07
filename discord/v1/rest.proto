@@ -490,6 +490,45 @@ message DeleteChannelResponse {
   }
 }
 
+// Get Channel Messages
+
+message GetChannelMessagesRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  pylon.discord.v1.model.SnowflakeValue around = 2;
+  pylon.discord.v1.model.SnowflakeValue before = 3;
+  pylon.discord.v1.model.SnowflakeValue after = 4;
+  uint32 limit = 5;
+}
+
+message GetChannelMessagesResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data {
+    repeated pylon.discord.v1.model.MessageData messages = 1;
+  }
+}
+
+// Get Channel Message
+
+message GetChannelMessageRequest {
+  fixed64 channel_id = 1 [jstype = JS_STRING];
+  fixed64 message_id = 2 [jstype = JS_STRING];
+}
+
+message GetChannelMessageResponse {
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
+}
+
 // Create Message
 
 message CreateMessageRequest {

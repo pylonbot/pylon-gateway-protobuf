@@ -56,6 +56,16 @@ message GetGuildMemberResponse {
   pylon.discord.v1.model.MemberData member = 1;
 }
 
+// GetGuildMemberPresence
+
+message GetGuildMemberPresenceRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
+
+message GetGuildMemberPresenceResponse {
+  pylon.discord.v1.model.PresenceData presence = 1;
+}
+
 // ListGuildRoles
 
 message ListGuildRolesRequest {}
