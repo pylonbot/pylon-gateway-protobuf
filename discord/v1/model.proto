@@ -319,9 +319,19 @@ message PresenceData {
     UserData user = 2;
     fixed64 user_id = 3;
   }
-  string status = 4;
+
+  OnlineStatus status = 4;
   PresenceClientStatusData client_status = 5;
   repeated PresenceActivityData activities = 6;
+
+  enum OnlineStatus {
+    UNKNOWN = 0;
+    ONLINE = 1;
+    IDLE = 2;
+    DND = 3;
+    INVISIBLE = 4;
+    OFFLINE = 5;
+  }
 
   message PresenceClientStatusData {
     string desktop = 1;
@@ -331,7 +341,7 @@ message PresenceData {
 
   message PresenceActivityData {
     string name = 1;
-    uint32 type = 2;
+    ActivityType type = 2;
     string url = 3;
     google.protobuf.Timestamp created_at = 4;
     PresenceActivityTimestampsData timestamps = 5;
@@ -344,6 +354,16 @@ message PresenceData {
     PresenceActivitySecretsData secrets = 12;
     bool instance = 13;
     uint32 flags = 14;
+
+    enum ActivityType {
+      UNKNOWN = 0;
+      DEFAULT = 1;
+      STREAMING = 2;
+      LISTENING = 3;
+      WATCHING = 4;
+      CUSTOM_STATUS = 5;
+      COMPETING = 6;
+    }
 
     message PresenceActivityTimestampsData {
       uint64 start = 1;

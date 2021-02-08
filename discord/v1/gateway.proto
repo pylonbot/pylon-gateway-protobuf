@@ -29,12 +29,12 @@ message UpdateStatusRequest {
 
   google.protobuf.Timestamp since = 2;
   repeated ActivityData activities = 3;
-  string status = 4;
+  pylon.discord.v1.model.PresenceData.OnlineStatus status = 4;
   bool afk = 5;
 
   message ActivityData {
     string name = 1;
-    uint32 type = 2;
+    pylon.discord.v1.model.PresenceData.PresenceActivityData.ActivityType type = 2;
   }
 }
 
