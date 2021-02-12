@@ -40,6 +40,16 @@ message UpdateStatusRequest {
 
 message UpdateStatusResponse {}
 
+// FindUser
+
+message FindUserRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
+
+message FindUserResponse {
+  pylon.discord.v1.model.UserData user = 1;
+}
+
 // FindUserMutualGuilds
 
 message GetUserMutualGuildsRequest {

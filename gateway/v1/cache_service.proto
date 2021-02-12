@@ -40,10 +40,6 @@ service GatewayCache {
   rpc GetGuildEmoji(pylon.discord.v1.cache.GetGuildEmojiRequest)
       returns (pylon.discord.v1.cache.GetGuildEmojiResponse);
 
-  // Users
-  rpc GetUser(pylon.discord.v1.cache.GetUserRequest)
-      returns (pylon.discord.v1.cache.GetUserResponse);
-
   // VoiceStates
   rpc GetGuildMemberVoiceState(pylon.discord.v1.cache.GetGuildMemberVoiceStateRequest)
       returns (pylon.discord.v1.cache.GetGuildMemberVoiceStateResponse);

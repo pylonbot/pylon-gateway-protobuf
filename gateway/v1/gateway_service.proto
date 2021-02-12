@@ -13,6 +13,8 @@ service Gateway {
       returns (pylon.discord.v1.gateway.UpdateVoiceStateResponse);
   rpc UpdateStatus(pylon.discord.v1.gateway.UpdateStatusRequest)
       returns (pylon.discord.v1.gateway.UpdateStatusResponse);
+  rpc FindUser(pylon.discord.v1.gateway.FindUserRequest)
+      returns (pylon.discord.v1.gateway.FindUserResponse);
   rpc FindUserMutualGuilds(pylon.discord.v1.gateway.GetUserMutualGuildsRequest)
       returns (pylon.discord.v1.gateway.GetUserMutualGuildsResponse);
   rpc FindEmoji(pylon.discord.v1.gateway.FindEmojiRequest)
