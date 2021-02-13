@@ -23,6 +23,8 @@ service GatewayCache {
       returns (pylon.discord.v1.cache.ListGuildMembersResponse);
   rpc GetGuildMember(pylon.discord.v1.cache.GetGuildMemberRequest)
       returns (pylon.discord.v1.cache.GetGuildMemberResponse);
+  rpc FindGuildMembers(pylon.discord.v1.cache.FindGuildMembersRequest)
+      returns (pylon.discord.v1.cache.FindGuildMembersResponse);
 
   // Guild Member Presence
   rpc GetGuildMemberPresence(pylon.discord.v1.cache.GetGuildMemberPresenceRequest)

@@ -7,6 +7,7 @@ option java_multiple_files = true;
 option go_package =
     "github.com/pylonbot/pylon-gateway-protobuf-go/discord/v1/cache";
 
+import "google/protobuf/wrappers.proto";
 import "discord/v1/model.proto";
 
 // GetGuild
@@ -54,6 +55,19 @@ message GetGuildMemberRequest {
 
 message GetGuildMemberResponse {
   pylon.discord.v1.model.MemberData member = 1;
+}
+
+// FindGuildMember
+
+message FindGuildMembersRequest {
+  google.protobuf.StringValue name = 1;
+  google.protobuf.StringValue prefix = 2;
+  discord.v1.model.PresenceData.OnlineStatus status = 3;
+  uint32 limit = 4;
+}
+
+message FindGuildMembersResponse {
+  repeated pylon.discord.v1.model.MemberData members = 1;
 }
 
 // GetGuildMemberPresence
