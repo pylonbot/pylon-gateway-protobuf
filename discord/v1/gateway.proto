@@ -69,3 +69,12 @@ message FindEmojiRequest {
 message FindEmojiResponse {
   pylon.discord.v1.model.EmojiData emoji = 1;
 }
+
+// GetStats
+
+message GetStatsRequest {}
+
+message GetStatsResponse {
+  uint64 guild_count = 1 [jstype = JS_STRING];
+  uint64 user_count = 2 [jstype = JS_STRING];
+}

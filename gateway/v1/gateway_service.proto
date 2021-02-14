@@ -19,4 +19,6 @@ service Gateway {
       returns (pylon.discord.v1.gateway.GetUserMutualGuildsResponse);
   rpc FindEmoji(pylon.discord.v1.gateway.FindEmojiRequest)
       returns (pylon.discord.v1.gateway.FindEmojiResponse);
+  rpc GetStats(pylon.discord.v1.gateway.GetStatsRequest)
+      returns (pylon.discord.v1.gateway.GetStatsResponse);
 }
