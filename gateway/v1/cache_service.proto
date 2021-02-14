@@ -47,4 +47,8 @@ service GatewayCache {
       returns (pylon.discord.v1.cache.GetGuildMemberVoiceStateResponse);
   rpc ListGuildChannelVoiceStates(pylon.discord.v1.cache.ListGuildChannelVoiceStatesRequest)
       returns (pylon.discord.v1.cache.ListGuildChannelVoiceStatesResponse);
+
+  // GetUser
+  rpc GetUser(pylon.discord.v1.cache.GetUserRequest)
+      returns (pylon.discord.v1.cache.GetUserResponse);
 }

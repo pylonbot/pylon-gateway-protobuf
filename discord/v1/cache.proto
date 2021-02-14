@@ -135,3 +135,13 @@ message ListGuildChannelVoiceStatesRequest {
 message ListGuildChannelVoiceStatesResponse {
   repeated pylon.discord.v1.model.VoiceStateData voice_states_data = 1;
 }
+
+// GetUser
+
+message GetUserRequest {
+  fixed64 user_id = 1 [jstype = JS_STRING];
+}
+
+message GetUserResponse {
+  pylon.discord.v1.model.UserData user = 1;
+}
