@@ -79,5 +79,5 @@ message GetStatsResponse {
   uint64 user_count = 2 [jstype = JS_STRING];
   uint64 member_count = 3 [jstype = JS_STRING];
   uint64 connected_channels = 4 [jstype = JS_STRING];
-  uint32 shard_count = 5 [jstype = JS_STRING];
+  uint32 shard_count = 5;
 }
