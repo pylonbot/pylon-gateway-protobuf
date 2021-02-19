@@ -25,7 +25,7 @@ message UpdateVoiceStateResponse {}
 // UpdateStatus
 
 message UpdateStatusRequest {
-  google.protobuf.Int32Value shard_id = 1;
+  google.protobuf.UInt32Value shard_id = 1;
 
   google.protobuf.Timestamp since = 2;
   repeated ActivityData activities = 3;

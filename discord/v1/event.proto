@@ -53,6 +53,7 @@ message EventEnvelope {
 
   message HeaderData {
     uint64 seq = 1;
+    google.protobuf.Timestamp received_at = 2;
   }
 }
 
