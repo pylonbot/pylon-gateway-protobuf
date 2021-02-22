@@ -8,6 +8,8 @@ option go_package =
 
 import "discord/v1/event.proto";
 
+/* Legacy Unary/Push-based Dispatch */
+
 service GatewayDispatchStreaming {
   rpc Event(stream pylon.discord.v1.event.EventEnvelope)
       returns (stream pylon.discord.v1.event.EventEnvelopeAck);

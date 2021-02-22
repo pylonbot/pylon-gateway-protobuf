@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pylon.gateway.v1.service;
+option java_package = "bot.pylon.proto.gateway.v1.service";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/service";
+
+import "discord/v1/event.proto";
+
+/* Worker Group Dispatch */
+
+service GatewayWorkerGroup {
+  rpc WorkerStream(stream pylon.gateway.v1.workergroup.WorkerClientMessage)
+      returns (stream pylon.gateway.v1.workergroup.WorkerServerMessage);
+}

@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package pylon.gateway.v1.workergroup;
+option java_package = "bot.pylon.proto.gateway.v1.workergroup";
+option java_multiple_files = true;
+option go_package =
+    "github.com/pylonbot/pylon-gateway-protobuf-go/gateway/v1/workergroup";
+
+import "discord/v1/event.proto";
+
+message WorkerStreamClientMessage {
+  oneof payload {
+    WorkerIdentifyRequest identify_request = 1;
+    WorkerHeartbeatRequest heartbeat_request = 2;
+    WorkerHeartbeatResponse heartbeat_response = 3;
+    WorkerDrainRequest drain_request = 4;
+  }
+}
+
+message WorkerStreamServerMessage {
+  oneof payload {
+    WorkerIdentifyResponse identify_response = 1;
+    pylon.discord.v1.event.EventEnvelope event_envelope = 2;
+    WorkerHeartbeatRequest heartbeat_request = 3;
+    WorkerHeartbeatResponse heartbeat_response = 4;
+    WorkerDrainResponse drain_response = 5;
+  }
+}
+
+message WorkerIdentifyRequest {
+  string auth_token = 1;
+  string consumer_group = 2;
+  string consumer_id = 3;
+  uint64 resume_sequence = 4;
+}
+
+message WorkerIdentifyResponse {
+  IdentifyStatus status = 1;
+  bool missed_events = 3;
+
+  enum IdentifyStatus {
+    UNKNOWN = 0;
+    OK = 1;
+    ERROR = 2;
+  }
+}
+
+message WorkerHeartbeatRequest {
+  uint64 last_sequence = 1;
+  string nonce = 2;
+}
+
+message WorkerHeartbeatResponse {
+  string nonce = 1;
+}
+
+message WorkerDrainRequest {}
+
+message WorkerDrainResponse {}
