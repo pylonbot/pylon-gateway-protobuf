@@ -63,7 +63,8 @@ message FindGuildMembersRequest {
   google.protobuf.StringValue name = 1;
   google.protobuf.StringValue prefix = 2;
   discord.v1.model.PresenceData.OnlineStatus status = 3;
-  uint32 limit = 4;
+  pylon.discord.v1.model.SnowflakeValue role_id = 4;
+  uint32 limit = 99;
 }
 
 message FindGuildMembersResponse {
