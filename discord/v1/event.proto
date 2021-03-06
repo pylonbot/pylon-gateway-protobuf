@@ -70,7 +70,6 @@ message EventScope {
 
 message ReadyEvent {
   EventScope scope = 1;
-  bool init = 2;
 }
 
 message ResumeEvent {
