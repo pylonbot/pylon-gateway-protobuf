@@ -49,6 +49,8 @@ message EventEnvelope {
     IntegrationUpdateEvent integration_update_event = 35;
     IntegrationDeleteEvent integration_delete_event = 36;
     InteractionCreateEvent interaction_create_event = 37;
+    ReadyEvent ready_event = 38;
+    ResumeEvent resume_event = 39;
   }
 
   message HeaderData {
@@ -64,6 +66,15 @@ message EventEnvelopeAck {
 message EventScope {
   fixed64 bot_id = 1 [jstype = JS_STRING];
   fixed64 guild_id = 2 [jstype = JS_STRING];
+}
+
+message ReadyEvent {
+  EventScope scope = 1;
+  bool init = 2;
+}
+
+message ResumeEvent {
+  EventScope scope = 1;
 }
 
 message GuildCreateEvent {
