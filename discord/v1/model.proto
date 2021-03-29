@@ -71,6 +71,9 @@ message ChannelData {
     GUILD_CATEGORY = 5;
     GUILD_NEWS = 6;
     GUILD_STORE = 7;
+    PUBLIC_THREAD = 8;
+    PRIVATE_THREAD = 9;
+    GUILD_STAGE_VOICE = 10;
   }
 
   message ChannelPermissionOverwriteData {
