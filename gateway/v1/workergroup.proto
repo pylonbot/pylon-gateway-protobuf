@@ -31,12 +31,11 @@ message WorkerIdentifyRequest {
   string auth_token = 1;
   string consumer_group = 2;
   string consumer_id = 3;
-  uint64 resume_sequence = 4;
 }
 
 message WorkerIdentifyResponse {
   IdentifyStatus status = 1;
-  bool missed_events = 3;
+  string consumer_id = 2;
 
   enum IdentifyStatus {
     UNKNOWN = 0;
