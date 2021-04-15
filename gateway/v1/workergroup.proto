@@ -8,44 +8,42 @@ option go_package =
 
 import "discord/v1/event.proto";
 
+// Client -> Server messages
 message WorkerStreamClientMessage {
   oneof payload {
     WorkerIdentifyRequest identify_request = 1;
-    WorkerHeartbeatRequest heartbeat_request = 2;
-    WorkerHeartbeatResponse heartbeat_response = 3;
-    WorkerDrainRequest drain_request = 4;
+    WorkerHeartbeatResponse heartbeat_response = 2;
+    WorkerDrainRequest drain_request = 3;
   }
 }
 
+// Server -> Client messages
 message WorkerStreamServerMessage {
   oneof payload {
     WorkerIdentifyResponse identify_response = 1;
     pylon.discord.v1.event.EventEnvelope event_envelope = 2;
     WorkerHeartbeatRequest heartbeat_request = 3;
-    WorkerHeartbeatResponse heartbeat_response = 4;
-    WorkerDrainResponse drain_response = 5;
+    WorkerStreamClosed stream_closed = 4;
   }
 }
 
+// Identification is the first message sent
 message WorkerIdentifyRequest {
   string auth_token = 1;
   string consumer_group = 2;
   string consumer_id = 3;
+
+  string router_ticket = 4;
 }
 
+// Router tickets are used for robust reconnections
 message WorkerIdentifyResponse {
-  IdentifyStatus status = 1;
-  string consumer_id = 2;
-
-  enum IdentifyStatus {
-    UNKNOWN = 0;
-    OK = 1;
-    ERROR = 2;
-  }
+  string router_ticket = 1;
 }
 
+// Heartbeats are used to keep check on clients and acknowledge received events
 message WorkerHeartbeatRequest {
-  uint64 last_sequence = 1;
+  uint64 sequence = 1;
   string nonce = 2;
 }
 
@@ -53,6 +51,20 @@ message WorkerHeartbeatResponse {
   string nonce = 1;
 }
 
-message WorkerDrainRequest {}
+// Clients can request to drain their connections
+message WorkerDrainRequest {
+  uint64 sequence = 1;
+}
 
-message WorkerDrainResponse {}
+// The server may close the connection with a reason
+message WorkerStreamClosed {
+  CloseReason reason = 1;
+
+  enum CloseReason {
+    UNKNOWN = 0;
+    HEARTBEAT_TIMEOUT = 1;
+    INVALID_IDENTITY = 2;
+    DRAIN_COMPLETE = 3;
+    REQUESTED_RECONNECT = 4;
+  }
+}
