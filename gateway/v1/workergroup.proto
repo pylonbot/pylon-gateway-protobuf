@@ -12,7 +12,7 @@ import "discord/v1/event.proto";
 message WorkerStreamClientMessage {
   oneof payload {
     WorkerIdentifyRequest identify_request = 1;
-    WorkerHeartbeatResponse heartbeat_response = 2;
+    WorkerHeartbeatAck heartbeat_ack = 2;
     WorkerDrainRequest drain_request = 3;
   }
 }
@@ -43,12 +43,12 @@ message WorkerIdentifyResponse {
 
 // Heartbeats are used to keep check on clients and acknowledge received events
 message WorkerHeartbeatRequest {
-  uint64 sequence = 1;
-  string nonce = 2;
+  string nonce = 1;
 }
 
-message WorkerHeartbeatResponse {
+message WorkerHeartbeatAck {
   string nonce = 1;
+  uint64 sequence = 2;
 }
 
 // Clients can request to drain their connections
