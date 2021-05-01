@@ -34,6 +34,7 @@ message WorkerIdentifyRequest {
   string consumer_id = 3;
 
   string router_ticket = 4;
+  uint64 last_sequence = 5;
 }
 
 // Router tickets are used for robust reconnections
