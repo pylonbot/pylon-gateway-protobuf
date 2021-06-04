@@ -172,6 +172,10 @@ message MessageData {
   UserData author = 21;
   MemberData member = 22;
   SnowflakeValue webhook_id = 23;
+  repeated MessageStickerData stickers = 24;
+  MessageInteractionData interaction = 25;
+  ChannelData thread = 26;
+  repeated MessageComponentData components = 27;
 
   enum MessageType {
     UNKNOWN = 0;
@@ -245,6 +249,63 @@ message MessageData {
     fixed64 guild_id = 2 [jstype = JS_STRING];
     ChannelData.ChannelType type = 3;
     string name = 4;
+  }
+
+  message MessageStickerData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    fixed64 pack_id = 2 [jstype = JS_STRING];
+    string name = 3;
+    string description = 4;
+    string tags = 5;
+    string asset = 6;
+    MessageStickerFormatType format_type = 7;
+
+    enum MessageStickerFormatType {
+      UNKNOWN = 0;
+      PNG = 1;
+      APNG = 2;
+      LOTTIE = 3;
+    }
+  }
+
+  message MessageInteractionData {
+    fixed64 id = 1 [jstype = JS_STRING];
+    MessageInteractionType type = 2;
+    string name = 3;
+    UserData user = 4;
+
+    enum MessageInteractionType {
+      UNKNOWN = 0;
+      PING = 1;
+      APPLICATION_COMMAND = 2;
+      MESSAGE_COMPONENT = 3;
+    }
+  }
+
+  message MessageComponentData {
+    enum MessageComponentType {
+      UNKNOWN = 0;
+      ACTION_ROW = 1;
+      BUTTON = 2;
+    }
+
+    enum MessageComponentButtonStyle {
+      UNKNOWN_BUTTON = 0;
+      PRIMARY = 1;
+      SECONDARY = 2;
+      SUCCESS = 3;
+      DANGER = 4;
+      LINK = 5;
+    }
+
+    MessageComponentType type = 1;
+    MessageComponentButtonStyle style = 2;
+    string label = 3;
+    MessageReactionEmojiData emoji = 4;
+    string custom_id = 5;
+    string url = 6;
+    bool disabled = 7;
+    repeated MessageComponentData components = 8;
   }
 
   message MessageEmbedData {
