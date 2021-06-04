@@ -538,7 +538,10 @@ message CreateMessageRequest {
   google.protobuf.BoolValue tts = 4;
   pylon.discord.v1.model.MessageData.MessageEmbedData embed = 5;
   AllowedMentions allowed_mentions = 6;
-  Attachment attachment = 7;
+  MessageReference message_reference = 7;
+  pylon.discord.v1.model.MessageData.MessageComponentData components = 8;
+
+  Attachment attachment = 99;
 
   message AllowedMentions {
     AllowedMentionTypes parse = 1;
@@ -550,6 +553,13 @@ message CreateMessageRequest {
       bool users = 2;
       bool everyone = 3;
     }
+  }
+
+  message MessageReference {
+    fixed64 message_id = 1 [jstype = JS_STRING];
+    fixed64 channel_id = 2 [jstype = JS_STRING];
+    fixed64 guild_id = 3 [jstype = JS_STRING];
+    bool fail_if_not_exists = 4;
   }
 
   message Attachment {
