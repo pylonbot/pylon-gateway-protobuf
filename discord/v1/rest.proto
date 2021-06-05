@@ -539,7 +539,7 @@ message CreateMessageRequest {
   pylon.discord.v1.model.MessageData.MessageEmbedData embed = 5;
   AllowedMentions allowed_mentions = 6;
   MessageReference message_reference = 7;
-  pylon.discord.v1.model.MessageData.MessageComponentData components = 8;
+  repeated pylon.discord.v1.model.MessageData.MessageComponentData components = 8;
 
   Attachment attachment = 99;
 
