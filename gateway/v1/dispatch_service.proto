@@ -87,5 +87,5 @@ service GatewayDispatch {
   rpc IntegrationDelete(pylon.discord.v1.event.IntegrationDeleteEvent)
       returns (pylon.discord.v1.event.EventResponse);
   rpc InteractionCreate(pylon.discord.v1.event.InteractionCreateEvent)
-      returns (pylon.discord.v1.event.InteractionResponse);
+      returns (pylon.discord.v1.event.EventResponse);
 }
