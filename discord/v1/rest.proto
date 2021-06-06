@@ -1047,7 +1047,10 @@ message InteractionResponseCreateRequest {
 }
 
 message InteractionResponseCreateResponse {
-
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
 }
 
 message InteractionFollowupMessageCreateRequest {
@@ -1057,7 +1060,14 @@ message InteractionFollowupMessageCreateRequest {
 }
 
 message InteractionFollowupMessageCreateResponse {
-  pylon.discord.v1.model.MessageData message = 1;
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
 }
 
 message InteractionFollowupMessageDeleteRequest {
@@ -1067,7 +1077,10 @@ message InteractionFollowupMessageDeleteRequest {
 }
 
 message InteractionFollowupMessageDeleteResponse {
-
+  oneof response {
+    RestError error = 1;
+    google.protobuf.Empty data = 2;
+  }
 }
 
 message InteractionFollowupMessageEditRequest {
@@ -1078,5 +1091,12 @@ message InteractionFollowupMessageEditRequest {
 }
 
 message InteractionFollowupMessageEditResponse {
-  pylon.discord.v1.model.MessageData message = 1;
+  oneof response {
+    RestError error = 1;
+    Data data = 2;
+  }
+
+  message Data {
+    pylon.discord.v1.model.MessageData message = 1;
+  }
 }
