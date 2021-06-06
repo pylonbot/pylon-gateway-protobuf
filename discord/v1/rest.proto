@@ -1041,7 +1041,7 @@ message CreateDmResponse {
 // Interactions
 
 message InteractionResponseCreateRequest {
-  pylon.discord.v1.model.SnowflakeValue application_id = 1;
+  pylon.discord.v1.model.SnowflakeValue interaction_id = 1;
   string token = 2;
   pylon.discord.v1.model.InteractionResponse interaction_response = 3;
 }
