@@ -537,23 +537,11 @@ message CreateMessageRequest {
   google.protobuf.StringValue nonce = 3;
   google.protobuf.BoolValue tts = 4;
   pylon.discord.v1.model.MessageData.MessageEmbedData embed = 5;
-  AllowedMentions allowed_mentions = 6;
+  pylon.discord.v1.model.MessageData.MessageAllowedMentionsData allowed_mentions = 6;
   MessageReference message_reference = 7;
   repeated pylon.discord.v1.model.MessageData.MessageComponentData components = 8;
 
   Attachment attachment = 99;
-
-  message AllowedMentions {
-    AllowedMentionTypes parse = 1;
-    pylon.discord.v1.model.SnowflakeListValue roles = 2;
-    pylon.discord.v1.model.SnowflakeListValue users = 3;
-
-    message AllowedMentionTypes {
-      bool roles = 1;
-      bool users = 2;
-      bool everyone = 3;
-    }
-  }
 
   message MessageReference {
     fixed64 message_id = 1 [jstype = JS_STRING];
@@ -1048,4 +1036,47 @@ message CreateDmResponse {
   message Data {
     pylon.discord.v1.model.ChannelData channel = 1;
   }
+}
+
+// Interactions
+
+message InteractionResponseCreateRequest {
+  pylon.discord.v1.model.SnowflakeValue application_id = 1;
+  string token = 2;
+  pylon.discord.v1.model.InteractionResponse interaction_response = 3;
+}
+
+message InteractionResponseCreateResponse {
+
+}
+
+message InteractionFollowupMessageCreateRequest {
+  pylon.discord.v1.model.SnowflakeValue application_id = 1;
+  string token = 2;
+  pylon.discord.v1.model.MessageData message = 3;
+}
+
+message InteractionFollowupMessageCreateResponse {
+  pylon.discord.v1.model.MessageData message = 1;
+}
+
+message InteractionFollowupMessageDeleteRequest {
+  pylon.discord.v1.model.SnowflakeValue application_id = 1;
+  string token = 2;
+  string message_id = 3; // either @original or a messageId
+}
+
+message InteractionFollowupMessageDeleteResponse {
+
+}
+
+message InteractionFollowupMessageEditRequest {
+  pylon.discord.v1.model.SnowflakeValue application_id = 1;
+  string token = 2;
+  string message_id = 3; // either @original or a messageId
+  pylon.discord.v1.model.MessageData message = 4;
+}
+
+message InteractionFollowupMessageEditResponse {
+  pylon.discord.v1.model.MessageData message = 1;
 }

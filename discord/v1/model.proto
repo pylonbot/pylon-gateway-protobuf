@@ -251,6 +251,18 @@ message MessageData {
     string name = 4;
   }
 
+  message MessageAllowedMentionsData {
+    AllowedMentionTypes parse = 1;
+    pylon.discord.v1.model.SnowflakeListValue roles = 2;
+    pylon.discord.v1.model.SnowflakeListValue users = 3;
+
+    message AllowedMentionTypes {
+      bool roles = 1;
+      bool users = 2;
+      bool everyone = 3;
+    }
+  }
+
   message MessageStickerData {
     fixed64 id = 1 [jstype = JS_STRING];
     fixed64 pack_id = 2 [jstype = JS_STRING];
@@ -378,13 +390,16 @@ message MessageData {
   }
 }
 
-message ApplicationCommandInteractionData {
+message InteractionDataMessageComponent {
+  string custom_id = 1;
+  MessageData.MessageComponentData.MessageComponentType component_type = 2;
+}
+
+message InteractionDataApplicationCommand {
   fixed64 id = 1 [jstype = JS_STRING];
   string name = 2;
   ApplicationCommandInteractionDataResolved resolved = 3;
   repeated ApplicationCommandInteractionDataOption options = 4;
-  string custom_id = 5;
-  MessageData.MessageComponentData.MessageComponentType component_type = 6;
 
   message ApplicationCommandInteractionDataResolved {
     repeated UserData users = 1;
@@ -413,6 +428,8 @@ message ApplicationCommandInteractionData {
     }
   }
 }
+
+
 
 message PresenceData {
   fixed64 guild_id = 1 [jstype = JS_STRING];
@@ -550,4 +567,28 @@ message InviteData {
 message GuildBanData {
   string reason = 1;
   UserData user = 2;
+}
+
+message InteractionResponse {
+
+  InteractionResponseType type = 1;
+  InteractionApplicationCommandCallbackData data = 2;
+
+  enum InteractionResponseType {
+    UNKNOWN = 0;
+    PONG = 1;
+    CHANNEL_MESSAGE_WITH_SOURCE = 4;
+    DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE = 5;
+    DEFERRED_UPDATE_MESSAGE = 6;
+    UPDATE_MESSAGE = 7;
+  }
+
+  message InteractionApplicationCommandCallbackData {
+    google.protobuf.BoolValue tts = 1;
+    google.protobuf.StringValue content = 2;
+    repeated MessageData.MessageEmbedData embeds = 3;
+    MessageData.MessageAllowedMentionsData allowed_mentions = 4;
+    google.protobuf.UInt64Value flags = 5;
+    repeated MessageData.MessageComponentData components = 6;
+  }
 }

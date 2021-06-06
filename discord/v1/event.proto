@@ -450,23 +450,60 @@ message IntegrationDeleteEvent {
 
 message InteractionCreateEvent {
   EventScope scope = 1;
-  PayloadData payload = 2;
+  discord.v1.model.MessageData.MessageInteractionData.MessageInteractionType type = 2;
+  oneof payload {
+    InteractionCreatePingEvent ping = 3;
+    InteractionCreateApplicationCommandEvent command = 4;
+    InteractionCreateMessageComponentEvent component = 5;
+  }
 
-  message PayloadData {
+  message InteractionCreatePingEvent {
+    InteractionCreateBasePayload base = 1;
+  }
+
+  message InteractionCreateApplicationCommandEvent {
+    InteractionCreateBasePayload base = 1;
+    discord.v1.model.InteractionDataApplicationCommand data = 2;
+  }
+
+  message InteractionCreateMessageComponentEvent {
+    InteractionCreateBasePayload base = 1;
+    discord.v1.model.MessageData message = 2;
+    discord.v1.model.InteractionDataMessageComponent data = 3;
+  }
+
+  message InteractionCreateBasePayload {
     fixed64 id = 1 [jstype = JS_STRING];
     fixed64 application_id = 2 [jstype = JS_STRING];
-    discord.v1.model.MessageData.MessageInteractionData.MessageInteractionType type = 3;
-    discord.v1.model.ApplicationCommandInteractionData data = 4;
-    fixed64 guild_id = 5 [jstype = JS_STRING];
-    fixed64 channel_id = 6 [jstype = JS_STRING];
-    discord.v1.model.MemberData member = 7;
-    discord.v1.model.UserData user = 8;
-    string token = 9;
-    uint32 version = 10;
-    discord.v1.model.MessageData message = 11;
+    discord.v1.model.MessageData.MessageInteractionData.MessageInteractionType type = 3; // dupe, but its there for UX
+    fixed64 channel_id = 4 [jstype = JS_STRING];
+    string token = 5;
+    uint32 version = 6;
+    InteractionCreateBasePayloadType source_type = 7;
+    oneof source_data {
+      InteractionCreateBasePayloadGuildData source_guild = 8;
+      InteractionCreateBasePayloadDmData source_dm = 9;
+    }
+  }
+
+  message InteractionCreateBasePayloadGuildData {
+    fixed64 guild_id = 1 [jstype = JS_STRING];
+    discord.v1.model.MemberData member = 2;
+  }
+
+  message InteractionCreateBasePayloadDmData {
+    discord.v1.model.UserData user = 1;
+  }
+
+  enum InteractionCreateBasePayloadType {
+    UNKNOWN = 0;
+    GUILD = 1;
+    DM = 2;
   }
 }
 
 message EventResponse {}
 
-message InteractionResponse {}
+message InteractionResponse {
+  discord.v1.model.InteractionResponse response = 1;
+}

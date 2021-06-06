@@ -117,4 +117,13 @@ service GatewayRest {
       returns (pylon.discord.v1.rest.LeaveGuildResponse);
   rpc CreateDm(pylon.discord.v1.rest.CreateDmRequest)
       returns (pylon.discord.v1.rest.CreateDmResponse);
+  // Interactions
+  rpc CreateInteractionResponse(pylon.discord.v1.rest.InteractionResponseCreateRequest)
+      returns (pylon.discord.v1.rest.InteractionResponseCreateResponse);
+  rpc CreateInteractionFollowupMessage(pylon.discord.v1.rest.InteractionFollowupMessageCreateRequest)
+      returns (pylon.discord.v1.rest.InteractionFollowupMessageCreateResponse);
+  rpc EditInteractionFollowupMessage(pylon.discord.v1.rest.InteractionFollowupMessageEditRequest)
+      returns (pylon.discord.v1.rest.InteractionFollowupMessageEditResponse);
+  rpc DeleteInteractionFollowupMessage(pylon.discord.v1.rest.InteractionFollowupMessageDeleteRequest)
+      returns (pylon.discord.v1.rest.InteractionFollowupMessageDeleteResponse);
 }
