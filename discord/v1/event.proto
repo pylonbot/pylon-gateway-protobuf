@@ -453,7 +453,17 @@ message InteractionCreateEvent {
   PayloadData payload = 2;
 
   message PayloadData {
-    sfixed64 guild_id = 1 [jstype = JS_STRING];
+    fixed64 id = 1 [jstype = JS_STRING];
+    fixed64 application_id = 2 [jstype = JS_STRING];
+    discord.v1.model.MessageData.MessageInteractionData.MessageInteractionType type = 3;
+    discord.v1.model.ApplicationCommandInteractionData data = 4;
+    fixed64 guild_id = 5 [jstype = JS_STRING];
+    fixed64 channel_id = 6 [jstype = JS_STRING];
+    discord.v1.model.MemberData member = 7;
+    discord.v1.model.UserData user = 8;
+    string token = 9;
+    uint32 version = 10;
+    discord.v1.model.MessageData message = 11;
   }
 }
 

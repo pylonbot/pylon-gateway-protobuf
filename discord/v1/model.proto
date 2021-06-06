@@ -378,6 +378,42 @@ message MessageData {
   }
 }
 
+message ApplicationCommandInteractionData {
+  fixed64 id = 1 [jstype = JS_STRING];
+  string name = 2;
+  ApplicationCommandInteractionDataResolved resolved = 3;
+  repeated ApplicationCommandInteractionDataOption options = 4;
+  string custom_id = 5;
+  MessageData.MessageComponentData.MessageComponentType component_type = 6;
+
+  message ApplicationCommandInteractionDataResolved {
+    repeated UserData users = 1;
+    repeated MemberData members = 2; // partial! missing user, deaf, mute
+    repeated RoleData roles = 3;
+    repeated ChannelData channels = 4; // partial! missing id, name, type, permissions
+  }
+
+  message ApplicationCommandInteractionDataOption {
+    string name = 1;
+    ApplicationCommandOptionType type = 2;
+    string value = 3; // todo: help it depends on above type I guess?
+    repeated ApplicationCommandInteractionDataOption options = 4;
+
+    enum ApplicationCommandOptionType {
+      UNKNOWN = 0;
+      SUB_COMMAND = 1;
+      SUB_COMMAND_GROUP = 2;
+      STRING = 3;
+      INTEGER = 4;
+      BOOLEAN = 5;
+      USER = 6;
+      CHANNEL = 7;
+      ROLE = 8;
+      MENTIONABLE = 9;
+    }
+  }
+}
+
 message PresenceData {
   fixed64 guild_id = 1 [jstype = JS_STRING];
   oneof maybe_partial_user {
