@@ -63,7 +63,7 @@ Use a language you don't see listed? Let us know! Alternatively, you may generat
 
 ## Services
 
-![service header](https://cdn.discordapp.com/attachments/412407865911803906/803668445971218472/pylon-service-header.png)
+![pylon-service-header](https://github.com/user-attachments/assets/7bea23c6-b14f-4714-b506-c038deb75049)
 
 ### Control API
 
@@ -93,14 +93,13 @@ Discord Rate-limits are automatically respected, and any requests that exceed th
 
 The diagram below features a broad overview of the internal services that make up the Pylon Gateway, including how a typical Discord bot or application may interact with Pylon Gateway's forward-facing APIs.
 
-![service map](https://cdn.discordapp.com/attachments/412407865911803906/803650350229225533/pylon-service-map.png)
-
+![pylon-service-map](https://github.com/user-attachments/assets/b9c740b9-9222-424b-84de-f5b910ec0207)
 
 ## Gateway Service
 
 The "Gateway" service is the core component of Pylon Gateway. Its main jobs are to maintain Shard tasks, forward Discord API requests, service Cache API requests, and buffer Discord events for client worker-groups. The Gateway service may run across a cluster of nodes, and it is the Operator Service's job to schedule and transfer shards across a cluster of healthy Gateway nodes.
 
-![gateway breakdown](https://cdn.discordapp.com/attachments/412407865911803906/803952463962308638/pylon-gateway-breakdown.png)
+![pylon-gateway-breakdown](https://github.com/user-attachments/assets/8828b360-8ee9-4e19-a126-7a25a4d02b48)
 
 ## Operator Service
 
